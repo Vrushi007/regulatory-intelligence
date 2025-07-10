@@ -1,0 +1,7 @@
+Setting up the MCP in user settings:
+
+      "reg-intel": {
+        "command": "/opt/homebrew/bin/dotnet",
+        "args": ["run"],
+        "cwd": "/Users/vrajaghatta/Library/CloudStorage/OneDrive-IQVIA/Learning/dotnet/MCPs/rim-poc"
+      }
