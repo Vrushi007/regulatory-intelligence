@@ -16,8 +16,11 @@ public interface IProductService
     // Methods for controlled vocabularies
     Task<IEnumerable<Product>> GetProductsByTypeIdAsync(int typeId);
     Task<IEnumerable<Product>> GetProductsBySubtypeIdAsync(int subtypeId);
-    Task<IEnumerable<Product>> GetProductsByRiskIdAsync(int riskId);
-    Task<IEnumerable<Product>> GetProductsByClassificationIdAsync(int classificationId);
+    Task<IEnumerable<Product>> GetProductsByMedicalSpecialtyIdAsync(int medicalSpecialtyId);
+    Task<IEnumerable<Product>> GetProductsByFunctionsIdAsync(int functionsId);
+    Task<IEnumerable<Product>> GetProductsByEnergySourceIdAsync(int energySourceId);
+    Task<IEnumerable<Product>> GetProductsByRadiationTypeIdAsync(int radiationTypeId);
+    Task<IEnumerable<Product>> GetProductsByRadiationEmittingAsync(bool radiationEmitting);
     Task<Product?> GetProductWithVocabulariesAsync(int id);
 }
 
@@ -35,10 +38,12 @@ public class ProductService : IProductService
         return await _context.Products
             .Where(p => p.IsActive)
             .Include(p => p.ProductFamily)
-            .Include(p => p.RiskVocabulary)
-            .Include(p => p.Classification)
+            .Include(p => p.MedicalSpecialty)
             .Include(p => p.ProductType)
             .Include(p => p.ProductSubtype)
+            .Include(p => p.Functions)
+            .Include(p => p.EnergySource)
+            .Include(p => p.RadiationType)
             .ToListAsync();
     }
 
@@ -46,10 +51,12 @@ public class ProductService : IProductService
     {
         return await _context.Products
             .Include(p => p.ProductFamily)
-            .Include(p => p.RiskVocabulary)
-            .Include(p => p.Classification)
+            .Include(p => p.MedicalSpecialty)
             .Include(p => p.ProductType)
             .Include(p => p.ProductSubtype)
+            .Include(p => p.Functions)
+            .Include(p => p.EnergySource)
+            .Include(p => p.RadiationType)
             .FirstOrDefaultAsync(p => p.Id == id);
     }
 
@@ -99,10 +106,13 @@ public class ProductService : IProductService
         existingProduct.Description = product.Description;
 
         // Handle vocabulary relationships
-        existingProduct.RiskId = product.RiskId;
-        existingProduct.ClassificationId = product.ClassificationId;
+        existingProduct.MedicalSpecialtyId = product.MedicalSpecialtyId;
         existingProduct.TypeId = product.TypeId;
         existingProduct.SubtypeId = product.SubtypeId;
+        existingProduct.FunctionsId = product.FunctionsId;
+        existingProduct.EnergySourceId = product.EnergySourceId;
+        existingProduct.RadiationTypeId = product.RadiationTypeId;
+        existingProduct.RadiationEmitting = product.RadiationEmitting;
 
         existingProduct.ProductFamilyId = product.ProductFamilyId;
         existingProduct.IsActive = product.IsActive;
@@ -140,10 +150,12 @@ public class ProductService : IProductService
         return await _context.Products
             .Where(p => p.Name.Contains(namePattern) && p.IsActive)
             .Include(p => p.ProductFamily)
-            .Include(p => p.RiskVocabulary)
-            .Include(p => p.Classification)
+            .Include(p => p.MedicalSpecialty)
             .Include(p => p.ProductType)
             .Include(p => p.ProductSubtype)
+            .Include(p => p.Functions)
+            .Include(p => p.EnergySource)
+            .Include(p => p.RadiationType)
             .ToListAsync();
     }
 
@@ -153,10 +165,12 @@ public class ProductService : IProductService
         return await _context.Products
             .Where(p => p.TypeId == typeId && p.IsActive)
             .Include(p => p.ProductFamily)
-            .Include(p => p.RiskVocabulary)
-            .Include(p => p.Classification)
+            .Include(p => p.MedicalSpecialty)
             .Include(p => p.ProductType)
             .Include(p => p.ProductSubtype)
+            .Include(p => p.Functions)
+            .Include(p => p.EnergySource)
+            .Include(p => p.RadiationType)
             .ToListAsync();
     }
 
@@ -165,34 +179,82 @@ public class ProductService : IProductService
         return await _context.Products
             .Where(p => p.SubtypeId == subtypeId && p.IsActive)
             .Include(p => p.ProductFamily)
-            .Include(p => p.RiskVocabulary)
-            .Include(p => p.Classification)
+            .Include(p => p.MedicalSpecialty)
             .Include(p => p.ProductType)
             .Include(p => p.ProductSubtype)
+            .Include(p => p.Functions)
+            .Include(p => p.EnergySource)
+            .Include(p => p.RadiationType)
             .ToListAsync();
     }
 
-    public async Task<IEnumerable<Product>> GetProductsByRiskIdAsync(int riskId)
+    public async Task<IEnumerable<Product>> GetProductsByMedicalSpecialtyIdAsync(int medicalSpecialtyId)
     {
         return await _context.Products
-            .Where(p => p.RiskId == riskId && p.IsActive)
+            .Where(p => p.MedicalSpecialtyId == medicalSpecialtyId && p.IsActive)
             .Include(p => p.ProductFamily)
-            .Include(p => p.RiskVocabulary)
-            .Include(p => p.Classification)
+            .Include(p => p.MedicalSpecialty)
             .Include(p => p.ProductType)
             .Include(p => p.ProductSubtype)
+            .Include(p => p.Functions)
+            .Include(p => p.EnergySource)
+            .Include(p => p.RadiationType)
             .ToListAsync();
     }
 
-    public async Task<IEnumerable<Product>> GetProductsByClassificationIdAsync(int classificationId)
+    public async Task<IEnumerable<Product>> GetProductsByFunctionsIdAsync(int functionsId)
     {
         return await _context.Products
-            .Where(p => p.ClassificationId == classificationId && p.IsActive)
+            .Where(p => p.FunctionsId == functionsId && p.IsActive)
             .Include(p => p.ProductFamily)
-            .Include(p => p.RiskVocabulary)
-            .Include(p => p.Classification)
+            .Include(p => p.MedicalSpecialty)
             .Include(p => p.ProductType)
             .Include(p => p.ProductSubtype)
+            .Include(p => p.Functions)
+            .Include(p => p.EnergySource)
+            .Include(p => p.RadiationType)
+            .ToListAsync();
+    }
+
+    public async Task<IEnumerable<Product>> GetProductsByEnergySourceIdAsync(int energySourceId)
+    {
+        return await _context.Products
+            .Where(p => p.EnergySourceId == energySourceId && p.IsActive)
+            .Include(p => p.ProductFamily)
+            .Include(p => p.MedicalSpecialty)
+            .Include(p => p.ProductType)
+            .Include(p => p.ProductSubtype)
+            .Include(p => p.Functions)
+            .Include(p => p.EnergySource)
+            .Include(p => p.RadiationType)
+            .ToListAsync();
+    }
+
+    public async Task<IEnumerable<Product>> GetProductsByRadiationTypeIdAsync(int radiationTypeId)
+    {
+        return await _context.Products
+            .Where(p => p.RadiationTypeId == radiationTypeId && p.IsActive)
+            .Include(p => p.ProductFamily)
+            .Include(p => p.MedicalSpecialty)
+            .Include(p => p.ProductType)
+            .Include(p => p.ProductSubtype)
+            .Include(p => p.Functions)
+            .Include(p => p.EnergySource)
+            .Include(p => p.RadiationType)
+            .ToListAsync();
+    }
+
+    public async Task<IEnumerable<Product>> GetProductsByRadiationEmittingAsync(bool radiationEmitting)
+    {
+        return await _context.Products
+            .Where(p => p.RadiationEmitting == radiationEmitting && p.IsActive)
+            .Include(p => p.ProductFamily)
+            .Include(p => p.MedicalSpecialty)
+            .Include(p => p.ProductType)
+            .Include(p => p.ProductSubtype)
+            .Include(p => p.Functions)
+            .Include(p => p.EnergySource)
+            .Include(p => p.RadiationType)
             .ToListAsync();
     }
 
@@ -200,10 +262,12 @@ public class ProductService : IProductService
     {
         return await _context.Products
             .Include(p => p.ProductFamily)
-            .Include(p => p.RiskVocabulary)
-            .Include(p => p.Classification)
+            .Include(p => p.MedicalSpecialty)
             .Include(p => p.ProductType)
             .Include(p => p.ProductSubtype)
+            .Include(p => p.Functions)
+            .Include(p => p.EnergySource)
+            .Include(p => p.RadiationType)
             .Include(p => p.Applications)
             .FirstOrDefaultAsync(p => p.Id == id);
     }

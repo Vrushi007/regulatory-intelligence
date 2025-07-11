@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using RimPoc.Data;
@@ -11,9 +12,11 @@ using RimPoc.Data;
 namespace rim_poc.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250710162300_MoveRiskFromProductToApplication")]
+    partial class MoveRiskFromProductToApplication
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -199,6 +202,9 @@ namespace rim_poc.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("ClassificationId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("CodeName")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -212,17 +218,8 @@ namespace rim_poc.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("character varying(500)");
 
-                    b.Property<int?>("EnergySourceId")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("FunctionsId")
-                        .HasColumnType("integer");
-
                     b.Property<bool>("IsActive")
                         .HasColumnType("boolean");
-
-                    b.Property<int?>("MedicalSpecialtyId")
-                        .HasColumnType("integer");
 
                     b.Property<DateTime?>("ModifiedAt")
                         .HasColumnType("timestamp with time zone");
@@ -235,12 +232,6 @@ namespace rim_poc.Migrations
                     b.Property<int>("ProductFamilyId")
                         .HasColumnType("integer");
 
-                    b.Property<bool>("RadiationEmitting")
-                        .HasColumnType("boolean");
-
-                    b.Property<int?>("RadiationTypeId")
-                        .HasColumnType("integer");
-
                     b.Property<int?>("SubtypeId")
                         .HasColumnType("integer");
 
@@ -249,15 +240,9 @@ namespace rim_poc.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EnergySourceId");
-
-                    b.HasIndex("FunctionsId");
-
-                    b.HasIndex("MedicalSpecialtyId");
+                    b.HasIndex("ClassificationId");
 
                     b.HasIndex("ProductFamilyId");
-
-                    b.HasIndex("RadiationTypeId");
 
                     b.HasIndex("SubtypeId");
 
@@ -348,19 +333,9 @@ namespace rim_poc.Migrations
 
             modelBuilder.Entity("RimPoc.Data.Product", b =>
                 {
-                    b.HasOne("RimPoc.Data.ControlledVocabulary", "EnergySource")
-                        .WithMany("ProductsAsEnergySource")
-                        .HasForeignKey("EnergySourceId")
-                        .OnDelete(DeleteBehavior.SetNull);
-
-                    b.HasOne("RimPoc.Data.ControlledVocabulary", "Functions")
-                        .WithMany("ProductsAsFunctions")
-                        .HasForeignKey("FunctionsId")
-                        .OnDelete(DeleteBehavior.SetNull);
-
-                    b.HasOne("RimPoc.Data.ControlledVocabulary", "MedicalSpecialty")
-                        .WithMany("ProductsAsMedicalSpecialty")
-                        .HasForeignKey("MedicalSpecialtyId")
+                    b.HasOne("RimPoc.Data.ControlledVocabulary", "Classification")
+                        .WithMany("ProductsAsClassification")
+                        .HasForeignKey("ClassificationId")
                         .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("RimPoc.Data.ProductFamily", "ProductFamily")
@@ -368,11 +343,6 @@ namespace rim_poc.Migrations
                         .HasForeignKey("ProductFamilyId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.HasOne("RimPoc.Data.ControlledVocabulary", "RadiationType")
-                        .WithMany("ProductsAsRadiationType")
-                        .HasForeignKey("RadiationTypeId")
-                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("RimPoc.Data.ControlledVocabulary", "ProductSubtype")
                         .WithMany("ProductsAsSubtype")
@@ -384,19 +354,13 @@ namespace rim_poc.Migrations
                         .HasForeignKey("TypeId")
                         .OnDelete(DeleteBehavior.SetNull);
 
-                    b.Navigation("EnergySource");
-
-                    b.Navigation("Functions");
-
-                    b.Navigation("MedicalSpecialty");
+                    b.Navigation("Classification");
 
                     b.Navigation("ProductFamily");
 
                     b.Navigation("ProductSubtype");
 
                     b.Navigation("ProductType");
-
-                    b.Navigation("RadiationType");
                 });
 
             modelBuilder.Entity("RimPoc.Data.ControlledVocabulary", b =>
@@ -405,13 +369,7 @@ namespace rim_poc.Migrations
 
                     b.Navigation("Children");
 
-                    b.Navigation("ProductsAsEnergySource");
-
-                    b.Navigation("ProductsAsFunctions");
-
-                    b.Navigation("ProductsAsMedicalSpecialty");
-
-                    b.Navigation("ProductsAsRadiationType");
+                    b.Navigation("ProductsAsClassification");
 
                     b.Navigation("ProductsAsSubtype");
 

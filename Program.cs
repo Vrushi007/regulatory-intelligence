@@ -28,7 +28,12 @@ builder.Services.Configure<JsonSerializerOptions>(options =>
     options.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
 });
 
-builder.Services.AddMcpServer().WithStdioServerTransport().WithTools<CountryTools>().WithTools<ProductTools>().WithTools<ProductFamilyTools>().WithTools<ApplicationTools>().WithTools<ControlledVocabularyTools>();
+builder.Services.AddMcpServer().WithStdioServerTransport()
+    .WithTools<CountryTools>()
+    .WithTools<ProductTools>()
+    .WithTools<ProductFamilyTools>()
+    .WithTools<ApplicationTools>()
+    .WithTools<ControlledVocabularyTools>();
 
 builder.Logging.AddConsole(options =>
 {
@@ -39,8 +44,7 @@ builder.Services.AddScoped<ICountryService, CountryService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductFamilyService, ProductFamilyService>();
 builder.Services.AddScoped<IApplicationService, ApplicationService>();
-builder.Services.AddScoped<ControlledVocabularyService>();
-
+builder.Services.AddScoped<IControlledVocabularyService, ControlledVocabularyService>();
 var host = builder.Build();
 
 // Ensure database is created and seed initial data

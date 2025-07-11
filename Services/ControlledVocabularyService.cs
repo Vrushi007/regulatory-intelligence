@@ -3,7 +3,13 @@ using RimPoc.Data;
 
 namespace RimPoc.Services;
 
-public class ControlledVocabularyService
+public interface IControlledVocabularyService
+{
+    Task<IEnumerable<ControlledVocabulary>> GetAllVocabulariesAsync();
+    Task<IEnumerable<ControlledVocabulary>> GetVocabulariesByCategoryAsync(string category);
+}
+
+public class ControlledVocabularyService : IControlledVocabularyService
 {
     private readonly ApplicationDbContext _context;
 
@@ -12,102 +18,142 @@ public class ControlledVocabularyService
         _context = context;
     }
 
-    // Get all vocabularies by category
-    public async Task<List<ControlledVocabulary>> GetVocabulariesByCategoryAsync(string category)
+    public async Task<IEnumerable<ControlledVocabulary>> GetAllVocabulariesAsync()
     {
+        return await _context.ControlledVocabularies
+            .Where(cv => cv.IsActive)
+            .Include(cv => cv.Parent)
+            .Include(cv => cv.Children.Where(c => c.IsActive))
+            .OrderBy(cv => cv.Category)
+            .ThenBy(cv => cv.DisplayOrder)
+            .ThenBy(cv => cv.Value)
+            .ToListAsync();
+    }
+
+
+    public async Task<IEnumerable<ControlledVocabulary>> GetVocabulariesByCategoryAsync(string category)
+    {
+        if (string.IsNullOrWhiteSpace(category))
+            return new List<ControlledVocabulary>();
+
         return await _context.ControlledVocabularies
             .Where(cv => cv.Category == category && cv.IsActive)
-            .OrderBy(cv => cv.DisplayOrder)
-            .ThenBy(cv => cv.Value)
-            .ToListAsync();
-    }
-
-    // Get vocabulary with its children (for ProductType -> ProductSubtypes)
-    public async Task<ControlledVocabulary?> GetVocabularyWithChildrenAsync(int id)
-    {
-        return await _context.ControlledVocabularies
-            .Include(cv => cv.Children.Where(c => c.IsActive))
-            .FirstOrDefaultAsync(cv => cv.Id == id && cv.IsActive);
-    }
-
-    // Get all product types with their subtypes
-    public async Task<List<ControlledVocabulary>> GetProductTypesWithSubtypesAsync()
-    {
-        return await _context.ControlledVocabularies
-            .Where(cv => cv.Category == "ProductType" && cv.ParentId == null && cv.IsActive)
+            .Include(cv => cv.Parent)
             .Include(cv => cv.Children.Where(c => c.IsActive))
             .OrderBy(cv => cv.DisplayOrder)
             .ThenBy(cv => cv.Value)
             .ToListAsync();
     }
 
-    // Get subtypes for a specific product type
-    public async Task<List<ControlledVocabulary>> GetSubtypesForProductTypeAsync(int productTypeId)
-    {
-        return await _context.ControlledVocabularies
-            .Where(cv => cv.Category == "ProductSubtype" && cv.ParentId == productTypeId && cv.IsActive)
-            .OrderBy(cv => cv.DisplayOrder)
-            .ThenBy(cv => cv.Value)
-            .ToListAsync();
-    }
+    // public async Task<ControlledVocabulary> CreateVocabularyAsync(ControlledVocabulary vocabulary)
+    // {
+    //     if (vocabulary == null)
+    //         throw new ArgumentNullException(nameof(vocabulary));
 
-    // Add new vocabulary
-    public async Task<ControlledVocabulary> AddVocabularyAsync(ControlledVocabulary vocabulary)
-    {
-        _context.ControlledVocabularies.Add(vocabulary);
-        await _context.SaveChangesAsync();
-        return vocabulary;
-    }
+    //     // Validate required fields
+    //     if (string.IsNullOrWhiteSpace(vocabulary.Code))
+    //         throw new ArgumentException("Code is required");
 
-    // Update vocabulary
-    public async Task<ControlledVocabulary?> UpdateVocabularyAsync(int id, ControlledVocabulary vocabulary)
-    {
-        var existing = await _context.ControlledVocabularies.FindAsync(id);
-        if (existing == null) return null;
+    //     if (string.IsNullOrWhiteSpace(vocabulary.Value))
+    //         throw new ArgumentException("Value is required");
 
-        existing.Code = vocabulary.Code;
-        existing.Value = vocabulary.Value;
-        existing.Description = vocabulary.Description;
-        existing.Category = vocabulary.Category;
-        existing.IsActive = vocabulary.IsActive;
-        existing.DisplayOrder = vocabulary.DisplayOrder;
-        existing.ParentId = vocabulary.ParentId;
-        existing.ModifiedAt = DateTime.UtcNow;
+    //     if (string.IsNullOrWhiteSpace(vocabulary.Category))
+    //         throw new ArgumentException("Category is required");
 
-        await _context.SaveChangesAsync();
-        return existing;
-    }
+    //     // Check if Code already exists
+    //     var existingVocabulary = await _context.ControlledVocabularies
+    //         .FirstOrDefaultAsync(cv => cv.Code == vocabulary.Code);
+    //     if (existingVocabulary != null)
+    //         throw new InvalidOperationException($"Vocabulary with Code '{vocabulary.Code}' already exists");
 
-    // Soft delete vocabulary
-    public async Task<bool> DeleteVocabularyAsync(int id)
-    {
-        var vocabulary = await _context.ControlledVocabularies.FindAsync(id);
-        if (vocabulary == null) return false;
+    //     // Validate parent if specified
+    //     if (vocabulary.ParentId.HasValue)
+    //     {
+    //         var parent = await _context.ControlledVocabularies.FindAsync(vocabulary.ParentId.Value);
+    //         if (parent == null)
+    //             throw new ArgumentException($"Parent vocabulary with ID {vocabulary.ParentId} does not exist");
+    //     }
 
-        vocabulary.IsActive = false;
-        vocabulary.ModifiedAt = DateTime.UtcNow;
-        await _context.SaveChangesAsync();
-        return true;
-    }
+    //     // Set audit fields
+    //     vocabulary.CreatedAt = DateTime.UtcNow;
+    //     vocabulary.IsActive = true;
 
-    // Validate that a subtype belongs to the correct parent type
-    public async Task<bool> ValidateSubtypeParentAsync(int subtypeId, int expectedParentId)
-    {
-        var subtype = await _context.ControlledVocabularies
-            .FirstOrDefaultAsync(cv => cv.Id == subtypeId && cv.Category == "ProductSubtype");
+    //     _context.ControlledVocabularies.Add(vocabulary);
+    //     await _context.SaveChangesAsync();
 
-        return subtype?.ParentId == expectedParentId;
-    }
+    //     return await GetVocabularyByIdAsync(vocabulary.Id) ?? vocabulary;
+    // }
 
-    // Get all risk levels
-    public async Task<List<ControlledVocabulary>> GetRiskLevelsAsync()
-    {
-        return await GetVocabulariesByCategoryAsync("Risk");
-    }
+    // public async Task<ControlledVocabulary?> UpdateVocabularyAsync(int id, ControlledVocabulary vocabulary)
+    // {
+    //     if (vocabulary == null)
+    //         throw new ArgumentNullException(nameof(vocabulary));
 
-    // Get all classifications
-    public async Task<List<ControlledVocabulary>> GetClassificationsAsync()
-    {
-        return await GetVocabulariesByCategoryAsync("Classification");
-    }
+    //     var existingVocabulary = await _context.ControlledVocabularies.FindAsync(id);
+    //     if (existingVocabulary == null)
+    //         return null;
+
+    //     // Validate required fields
+    //     if (string.IsNullOrWhiteSpace(vocabulary.Code))
+    //         throw new ArgumentException("Code is required");
+
+    //     if (string.IsNullOrWhiteSpace(vocabulary.Value))
+    //         throw new ArgumentException("Value is required");
+
+    //     if (string.IsNullOrWhiteSpace(vocabulary.Category))
+    //         throw new ArgumentException("Category is required");
+
+    //     // Check if Code already exists for another vocabulary
+    //     var duplicateCode = await _context.ControlledVocabularies
+    //         .FirstOrDefaultAsync(cv => cv.Code == vocabulary.Code && cv.Id != id);
+    //     if (duplicateCode != null)
+    //         throw new InvalidOperationException($"Vocabulary with Code '{vocabulary.Code}' already exists");
+
+    //     // Validate parent if specified
+    //     if (vocabulary.ParentId.HasValue)
+    //     {
+    //         var parent = await _context.ControlledVocabularies.FindAsync(vocabulary.ParentId.Value);
+    //         if (parent == null)
+    //             throw new ArgumentException($"Parent vocabulary with ID {vocabulary.ParentId} does not exist");
+    //     }
+
+    //     // Update properties
+    //     existingVocabulary.Code = vocabulary.Code;
+    //     existingVocabulary.Value = vocabulary.Value;
+    //     existingVocabulary.Description = vocabulary.Description;
+    //     existingVocabulary.Category = vocabulary.Category;
+    //     existingVocabulary.IsActive = vocabulary.IsActive;
+    //     existingVocabulary.DisplayOrder = vocabulary.DisplayOrder;
+    //     existingVocabulary.ParentId = vocabulary.ParentId;
+    //     existingVocabulary.ModifiedAt = DateTime.UtcNow;
+
+    //     await _context.SaveChangesAsync();
+
+    //     return await GetVocabularyByIdAsync(id);
+    // }
+
+    // public async Task<bool> DeleteVocabularyAsync(int id)
+    // {
+    //     var vocabulary = await _context.ControlledVocabularies
+    //         .Include(cv => cv.Children)
+    //         .FirstOrDefaultAsync(cv => cv.Id == id);
+
+    //     if (vocabulary == null)
+    //         return false;
+
+    //     // Check if there are active children
+    //     var hasActiveChildren = vocabulary.Children.Any(c => c.IsActive);
+    //     if (hasActiveChildren)
+    //     {
+    //         throw new InvalidOperationException("Cannot delete vocabulary that has active children associated with it.");
+    //     }
+
+    //     // Soft delete by setting IsActive to false
+    //     vocabulary.IsActive = false;
+    //     vocabulary.ModifiedAt = DateTime.UtcNow;
+    //     await _context.SaveChangesAsync();
+    //     return true;
+    // }
+
+
 }

@@ -20,7 +20,7 @@ public class ControlledVocabulary
 
     [Required]
     [MaxLength(50)]
-    public string Category { get; set; } = string.Empty; // Risk, Classification, ProductType, ProductSubtype
+    public string Category { get; set; } = string.Empty; // Risk, MedicalSpecialty, ProductType, ProductSubtype, Functions, EnergySource, RadiationType
 
     public bool IsActive { get; set; } = true;
 
@@ -39,16 +39,25 @@ public class ControlledVocabulary
     [JsonIgnore]
     public ICollection<ControlledVocabulary> Children { get; set; } = new List<ControlledVocabulary>();
 
-    // Navigation properties for products that use this vocabulary
+    // Navigation properties for entities that use this vocabulary
     [JsonIgnore]
-    public ICollection<Product> ProductsAsRisk { get; set; } = new List<Product>();
+    public ICollection<Application> ApplicationsAsRisk { get; set; } = new List<Application>();
 
     [JsonIgnore]
-    public ICollection<Product> ProductsAsClassification { get; set; } = new List<Product>();
+    public ICollection<Product> ProductsAsMedicalSpecialty { get; set; } = new List<Product>();
 
     [JsonIgnore]
     public ICollection<Product> ProductsAsType { get; set; } = new List<Product>();
 
     [JsonIgnore]
     public ICollection<Product> ProductsAsSubtype { get; set; } = new List<Product>();
+
+    [JsonIgnore]
+    public ICollection<Product> ProductsAsFunctions { get; set; } = new List<Product>();
+
+    [JsonIgnore]
+    public ICollection<Product> ProductsAsEnergySource { get; set; } = new List<Product>();
+
+    [JsonIgnore]
+    public ICollection<Product> ProductsAsRadiationType { get; set; } = new List<Product>();
 }

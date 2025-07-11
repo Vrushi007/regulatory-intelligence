@@ -35,50 +35,6 @@ public class ProductTools
         return await productService.GetProductByIdAsync(id);
     }
 
-    // [McpServerTool, Description("Get a product by its code name")]
-    // public async Task<Product?> GetProductByCodeNameAsync(
-    //     [Description("The code name of the product to retrieve")] string codeName)
-    // {
-    //     using var scope = _serviceScopeFactory.CreateScope();
-    //     var productService = scope.ServiceProvider.GetRequiredService<IProductService>();
-    //     return await productService.GetProductByCodeNameAsync(codeName);
-    // }
-
-    // [McpServerTool, Description("Search products by name (partial match)")]
-    // public async Task<List<Product>> SearchProductsByNameAsync(
-    //     [Description("Part of the product name to search for")] string namePattern)
-    // {
-    //     using var scope = _serviceScopeFactory.CreateScope();
-    //     var productService = scope.ServiceProvider.GetRequiredService<IProductService>();
-    //     return (List<Product>)await productService.SearchProductsByNameAsync(namePattern);
-    // }
-
-    // [McpServerTool, Description("Get products by product family ID")]
-    // public async Task<List<Product>> GetProductsByProductFamilyIdAsync(
-    //     [Description("The ID of the product family")] int productFamilyId)
-    // {
-    //     using var scope = _serviceScopeFactory.CreateScope();
-    //     var productService = scope.ServiceProvider.GetRequiredService<IProductService>();
-    //     return (List<Product>)await productService.GetProductsByProductFamilyIdAsync(productFamilyId);
-    // }
-
-    // [McpServerTool, Description("Get products by type")]
-    // public async Task<List<Product>> GetProductsByTypeAsync(
-    //     [Description("The type of products to retrieve")] string type)
-    // {
-    //     using var scope = _serviceScopeFactory.CreateScope();
-    //     var productService = scope.ServiceProvider.GetRequiredService<IProductService>();
-    //     return (List<Product>)await productService.GetProductsByTypeAsync(type);
-    // }
-
-    // [McpServerTool, Description("Get products by risk level")]
-    // public async Task<List<Product>> GetProductsByRiskAsync(
-    //     [Description("The risk level of products to retrieve")] string risk)
-    // {
-    //     using var scope = _serviceScopeFactory.CreateScope();
-    //     var productService = scope.ServiceProvider.GetRequiredService<IProductService>();
-    //     return (List<Product>)await productService.GetProductsByRiskAsync(risk);
-    // }
 
     [McpServerTool, Description("Create a new product with controlled vocabularies")]
     public async Task<Product> CreateProductAsync(
@@ -86,10 +42,13 @@ public class ProductTools
         [Description("The code name of the product")] string codeName,
         [Description("The description of the product")] string description,
         [Description("The ID of the product family this product belongs to")] int productFamilyId,
-        [Description("The risk level ID (optional)")] int? riskId = null,
-        [Description("The classification ID (optional)")] int? classificationId = null,
+        [Description("The medical specialty ID (optional)")] int? medicalSpecialtyId = null,
         [Description("The product type ID (optional)")] int? typeId = null,
-        [Description("The product subtype ID (optional)")] int? subtypeId = null)
+        [Description("The product subtype ID (optional)")] int? subtypeId = null,
+        [Description("The functions ID (optional)")] int? functionsId = null,
+        [Description("The energy source ID (optional)")] int? energySourceId = null,
+        [Description("The radiation type ID (optional)")] int? radiationTypeId = null,
+        [Description("Whether the product emits radiation")] bool radiationEmitting = false)
     {
         using var scope = _serviceScopeFactory.CreateScope();
         var productService = scope.ServiceProvider.GetRequiredService<IProductService>();
@@ -100,10 +59,13 @@ public class ProductTools
             CodeName = codeName,
             Description = description,
             ProductFamilyId = productFamilyId,
-            RiskId = riskId,
-            ClassificationId = classificationId,
+            MedicalSpecialtyId = medicalSpecialtyId,
             TypeId = typeId,
             SubtypeId = subtypeId,
+            FunctionsId = functionsId,
+            EnergySourceId = energySourceId,
+            RadiationTypeId = radiationTypeId,
+            RadiationEmitting = radiationEmitting,
             IsActive = true
         };
 
@@ -117,10 +79,13 @@ public class ProductTools
         [Description("The new code name of the product")] string codeName,
         [Description("The new description of the product")] string description,
         [Description("The new product family ID")] int productFamilyId,
-        [Description("The risk level ID (optional)")] int? riskId = null,
-        [Description("The classification ID (optional)")] int? classificationId = null,
+        [Description("The medical specialty ID (optional)")] int? medicalSpecialtyId = null,
         [Description("The product type ID (optional)")] int? typeId = null,
         [Description("The product subtype ID (optional)")] int? subtypeId = null,
+        [Description("The functions ID (optional)")] int? functionsId = null,
+        [Description("The energy source ID (optional)")] int? energySourceId = null,
+        [Description("The radiation type ID (optional)")] int? radiationTypeId = null,
+        [Description("Whether the product emits radiation")] bool radiationEmitting = false,
         [Description("Whether the product should be active")] bool isActive = true)
     {
         using var scope = _serviceScopeFactory.CreateScope();
@@ -132,10 +97,13 @@ public class ProductTools
             CodeName = codeName,
             Description = description,
             ProductFamilyId = productFamilyId,
-            RiskId = riskId,
-            ClassificationId = classificationId,
+            MedicalSpecialtyId = medicalSpecialtyId,
             TypeId = typeId,
             SubtypeId = subtypeId,
+            FunctionsId = functionsId,
+            EnergySourceId = energySourceId,
+            RadiationTypeId = radiationTypeId,
+            RadiationEmitting = radiationEmitting,
             IsActive = isActive
         };
 
@@ -149,50 +117,5 @@ public class ProductTools
         using var scope = _serviceScopeFactory.CreateScope();
         var productService = scope.ServiceProvider.GetRequiredService<IProductService>();
         return await productService.DeleteProductAsync(id);
-    }
-
-    [McpServerTool, Description("Get a product with all its vocabulary relationships")]
-    public async Task<Product?> GetProductWithVocabulariesAsync(
-        [Description("The ID of the product to retrieve")] int id)
-    {
-        using var scope = _serviceScopeFactory.CreateScope();
-        var productService = scope.ServiceProvider.GetRequiredService<IProductService>();
-        return await productService.GetProductWithVocabulariesAsync(id);
-    }
-
-    [McpServerTool, Description("Get products by risk level ID")]
-    public async Task<List<Product>> GetProductsByRiskIdAsync(
-        [Description("The risk level ID to filter by")] int riskId)
-    {
-        using var scope = _serviceScopeFactory.CreateScope();
-        var productService = scope.ServiceProvider.GetRequiredService<IProductService>();
-        return (List<Product>)await productService.GetProductsByRiskIdAsync(riskId);
-    }
-
-    [McpServerTool, Description("Get products by classification ID")]
-    public async Task<List<Product>> GetProductsByClassificationIdAsync(
-        [Description("The classification ID to filter by")] int classificationId)
-    {
-        using var scope = _serviceScopeFactory.CreateScope();
-        var productService = scope.ServiceProvider.GetRequiredService<IProductService>();
-        return (List<Product>)await productService.GetProductsByClassificationIdAsync(classificationId);
-    }
-
-    [McpServerTool, Description("Get products by product type ID")]
-    public async Task<List<Product>> GetProductsByTypeIdAsync(
-        [Description("The product type ID to filter by")] int typeId)
-    {
-        using var scope = _serviceScopeFactory.CreateScope();
-        var productService = scope.ServiceProvider.GetRequiredService<IProductService>();
-        return (List<Product>)await productService.GetProductsByTypeIdAsync(typeId);
-    }
-
-    [McpServerTool, Description("Get products by product subtype ID")]
-    public async Task<List<Product>> GetProductsBySubtypeIdAsync(
-        [Description("The product subtype ID to filter by")] int subtypeId)
-    {
-        using var scope = _serviceScopeFactory.CreateScope();
-        var productService = scope.ServiceProvider.GetRequiredService<IProductService>();
-        return (List<Product>)await productService.GetProductsBySubtypeIdAsync(subtypeId);
     }
 }

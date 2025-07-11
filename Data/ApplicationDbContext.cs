@@ -65,14 +65,9 @@ public class ApplicationDbContext : DbContext
                 .OnDelete(DeleteBehavior.Restrict);
 
             // Configure relationships with ControlledVocabulary
-            entity.HasOne(e => e.RiskVocabulary)
-                .WithMany(cv => cv.ProductsAsRisk)
-                .HasForeignKey(e => e.RiskId)
-                .OnDelete(DeleteBehavior.SetNull);
-
-            entity.HasOne(e => e.Classification)
-                .WithMany(cv => cv.ProductsAsClassification)
-                .HasForeignKey(e => e.ClassificationId)
+            entity.HasOne(e => e.MedicalSpecialty)
+                .WithMany(cv => cv.ProductsAsMedicalSpecialty)
+                .HasForeignKey(e => e.MedicalSpecialtyId)
                 .OnDelete(DeleteBehavior.SetNull);
 
             entity.HasOne(e => e.ProductType)
@@ -83,6 +78,21 @@ public class ApplicationDbContext : DbContext
             entity.HasOne(e => e.ProductSubtype)
                 .WithMany(cv => cv.ProductsAsSubtype)
                 .HasForeignKey(e => e.SubtypeId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            entity.HasOne(e => e.Functions)
+                .WithMany(cv => cv.ProductsAsFunctions)
+                .HasForeignKey(e => e.FunctionsId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            entity.HasOne(e => e.EnergySource)
+                .WithMany(cv => cv.ProductsAsEnergySource)
+                .HasForeignKey(e => e.EnergySourceId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            entity.HasOne(e => e.RadiationType)
+                .WithMany(cv => cv.ProductsAsRadiationType)
+                .HasForeignKey(e => e.RadiationTypeId)
                 .OnDelete(DeleteBehavior.SetNull);
         });
 
@@ -109,6 +119,12 @@ public class ApplicationDbContext : DbContext
                 .HasForeignKey(e => e.CountryId)
                 .OnDelete(DeleteBehavior.Restrict)
                 .IsRequired();
+
+            // Configure relationship with ControlledVocabulary for Risk
+            entity.HasOne(e => e.RiskVocabulary)
+                .WithMany(cv => cv.ApplicationsAsRisk)
+                .HasForeignKey(e => e.RiskId)
+                .OnDelete(DeleteBehavior.SetNull);
 
             // Indexes
             entity.HasIndex(e => e.SerialNum)

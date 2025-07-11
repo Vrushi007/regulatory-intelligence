@@ -39,6 +39,7 @@ public class ApplicationService : IApplicationService
     {
         return await _context.Applications
             .Include(a => a.Country)
+            .Include(a => a.RiskVocabulary)
             .Include(a => a.Products)
                 .ThenInclude(p => p.ProductFamily)
             .FirstOrDefaultAsync(a => a.Id == id);
@@ -204,6 +205,15 @@ public class ApplicationService : IApplicationService
         if (!countryExists)
             throw new ArgumentException($"Country with ID {application.CountryId} does not exist");
 
+        // Validate RiskId if provided
+        if (application.RiskId.HasValue)
+        {
+            var riskExists = await _context.ControlledVocabularies
+                .AnyAsync(cv => cv.Id == application.RiskId.Value && cv.Category == "Risk");
+            if (!riskExists)
+                throw new ArgumentException($"Risk with ID {application.RiskId} does not exist");
+        }
+
         // Validate that all product IDs exist
         if (productIds != null && productIds.Any())
         {
@@ -274,6 +284,15 @@ public class ApplicationService : IApplicationService
         if (!countryExists)
             throw new ArgumentException($"Country with ID {application.CountryId} does not exist");
 
+        // Validate RiskId if provided
+        if (application.RiskId.HasValue)
+        {
+            var riskExists = await _context.ControlledVocabularies
+                .AnyAsync(cv => cv.Id == application.RiskId.Value && cv.Category == "Risk");
+            if (!riskExists)
+                throw new ArgumentException($"Risk with ID {application.RiskId} does not exist");
+        }
+
         // Update products if provided
         if (productIds != null)
         {
@@ -313,6 +332,7 @@ public class ApplicationService : IApplicationService
         existingApplication.Name = application.Name;
         existingApplication.Type = application.Type;
         existingApplication.CountryId = application.CountryId;
+        existingApplication.RiskId = application.RiskId;
         existingApplication.AppNumber = application.AppNumber;
         existingApplication.Status = application.Status;
 

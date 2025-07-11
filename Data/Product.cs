@@ -20,10 +20,15 @@ public class Product
     public int ProductFamilyId { get; set; }
 
     // Foreign keys to ControlledVocabulary
-    public int? RiskId { get; set; }
-    public int? ClassificationId { get; set; }
+    public int? MedicalSpecialtyId { get; set; }
     public int? TypeId { get; set; }
     public int? SubtypeId { get; set; }
+    public int? FunctionsId { get; set; }
+    public int? EnergySourceId { get; set; }
+    public int? RadiationTypeId { get; set; }
+
+    // Additional properties
+    public bool RadiationEmitting { get; set; } = false;
 
     // Navigation property - many Products belong to one ProductFamily
     [JsonIgnore]
@@ -31,16 +36,22 @@ public class Product
 
     // Navigation properties to ControlledVocabulary
     [JsonIgnore]
-    public ControlledVocabulary? RiskVocabulary { get; set; }
-
-    [JsonIgnore]
-    public ControlledVocabulary? Classification { get; set; }
+    public ControlledVocabulary? MedicalSpecialty { get; set; }
 
     [JsonIgnore]
     public ControlledVocabulary? ProductType { get; set; }
 
     [JsonIgnore]
     public ControlledVocabulary? ProductSubtype { get; set; }
+
+    [JsonIgnore]
+    public ControlledVocabulary? Functions { get; set; }
+
+    [JsonIgnore]
+    public ControlledVocabulary? EnergySource { get; set; }
+
+    [JsonIgnore]
+    public ControlledVocabulary? RadiationType { get; set; }
 
     // ✅ New many-to-many relationship
     [JsonIgnore]

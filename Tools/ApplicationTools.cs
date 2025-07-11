@@ -16,33 +16,6 @@ public class ApplicationTools
         _serviceScopeFactory = serviceScopeFactory;
     }
 
-    // [McpServerTool, Description("Get an application by its ID")]
-    // public async Task<Application?> GetApplicationByIdAsync(
-    //     [Description("The ID of the application to retrieve")] int id)
-    // {
-    //     using var scope = _serviceScopeFactory.CreateScope();
-    //     var applicationService = scope.ServiceProvider.GetRequiredService<IApplicationService>();
-    //     return await applicationService.GetByIdAsync(id);
-    // }
-
-    // [McpServerTool, Description("Get an application by its serial number")]
-    // public async Task<Application?> GetApplicationBySerialNumAsync(
-    //     [Description("The serial number of the application to retrieve")] string serialNum)
-    // {
-    //     using var scope = _serviceScopeFactory.CreateScope();
-    //     var applicationService = scope.ServiceProvider.GetRequiredService<IApplicationService>();
-    //     return await applicationService.GetBySerialNumAsync(serialNum);
-    // }
-
-    // [McpServerTool, Description("Get an application by its application number")]
-    // public async Task<Application?> GetApplicationByAppNumberAsync(
-    //     [Description("The application number to search for")] string appNumber)
-    // {
-    //     using var scope = _serviceScopeFactory.CreateScope();
-    //     var applicationService = scope.ServiceProvider.GetRequiredService<IApplicationService>();
-    //     return await applicationService.GetByAppNumberAsync(appNumber);
-    // }
-
     [McpServerTool, Description("Get all applications")]
     public async Task<List<Application>> GetAllApplicationsAsync()
     {
@@ -50,17 +23,6 @@ public class ApplicationTools
         var applicationService = scope.ServiceProvider.GetRequiredService<IApplicationService>();
         return (List<Application>)await applicationService.GetAllAsync();
     }
-
-    // [McpServerTool, Description("Get applications with advanced filtering")]
-    // public async Task<List<Application>> GetApplicationsWithFilterAsync(
-    //     [Description("Filter by active status (true for active, false for inactive, null for all)")] bool? isActive = null,
-    //     [Description("Skip this many results (for pagination)")] int skip = 0,
-    //     [Description("Maximum number of results to return")] int limit = 0)
-    // {
-    //     using var scope = _serviceScopeFactory.CreateScope();
-    //     var applicationService = scope.ServiceProvider.GetRequiredService<IApplicationService>();
-    //     return (List<Application>)await applicationService.GetWithFilterAsync(isActive, skip, limit);
-    // }
 
     [McpServerTool, Description("Get applications by country ID")]
     public async Task<List<Application>> GetApplicationsByCountryIdAsync(
@@ -79,33 +41,6 @@ public class ApplicationTools
         var applicationService = scope.ServiceProvider.GetRequiredService<IApplicationService>();
         return (List<Application>)await applicationService.GetByProductIdAsync(productId);
     }
-
-    // [McpServerTool, Description("Get applications by status")]
-    // public async Task<List<Application>> GetApplicationsByStatusAsync(
-    //     [Description("The status of applications to retrieve")] string status)
-    // {
-    //     using var scope = _serviceScopeFactory.CreateScope();
-    //     var applicationService = scope.ServiceProvider.GetRequiredService<IApplicationService>();
-    //     return (List<Application>)await applicationService.GetByStatusAsync(status);
-    // }
-
-    // [McpServerTool, Description("Get applications by type")]
-    // public async Task<List<Application>> GetApplicationsByTypeAsync(
-    //     [Description("The type of applications to retrieve")] string type)
-    // {
-    //     using var scope = _serviceScopeFactory.CreateScope();
-    //     var applicationService = scope.ServiceProvider.GetRequiredService<IApplicationService>();
-    //     return (List<Application>)await applicationService.GetByTypeAsync(type);
-    // }
-
-    // [McpServerTool, Description("Search applications by name (partial match)")]
-    // public async Task<List<Application>> SearchApplicationsByNameAsync(
-    //     [Description("Part of the application name to search for")] string namePattern)
-    // {
-    //     using var scope = _serviceScopeFactory.CreateScope();
-    //     var applicationService = scope.ServiceProvider.GetRequiredService<IApplicationService>();
-    //     return (List<Application>)await applicationService.SearchByNameAsync(namePattern);
-    // }
 
     [McpServerTool, Description("Create a new application")]
     public async Task<Application> CreateApplicationAsync(
