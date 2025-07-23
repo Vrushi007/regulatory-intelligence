@@ -22,6 +22,8 @@ public class ControlledVocabulary
     [MaxLength(50)]
     public string Category { get; set; } = string.Empty; // Risk, MedicalSpecialty, ProductType, ProductSubtype, Functions, EnergySource, RadiationType
 
+    public string? Country { get; set; } // Country codes (e.g., US, GB, FR, etc. or comma-separated values)
+
     public bool IsActive { get; set; } = true;
 
     public int? DisplayOrder { get; set; }

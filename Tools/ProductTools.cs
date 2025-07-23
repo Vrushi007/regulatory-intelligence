@@ -38,17 +38,17 @@ public class ProductTools
 
     [McpServerTool, Description("Create a new product with controlled vocabularies")]
     public async Task<Product> CreateProductAsync(
-        [Description("The name of the product")] string name,
-        [Description("The code name of the product")] string codeName,
-        [Description("The description of the product")] string description,
-        [Description("The ID of the product family this product belongs to")] int productFamilyId,
-        [Description("The medical specialty ID (optional)")] int? medicalSpecialtyId = null,
-        [Description("The product type ID (optional)")] int? typeId = null,
-        [Description("The product subtype ID (optional)")] int? subtypeId = null,
-        [Description("The functions ID (optional)")] int? functionsId = null,
-        [Description("The energy source ID (optional)")] int? energySourceId = null,
-        [Description("The radiation type ID (optional)")] int? radiationTypeId = null,
-        [Description("Whether the product emits radiation")] bool radiationEmitting = false)
+        [Description("Required: (Ask user if not provided): The name of the product")] string name,
+        [Description("Required: (Ask user if not provided): The code name of the product")] string codeName,
+        [Description("Required: (Ask user if not provided): The description of the product")] string description,
+        [Description("Required: (Ask user if not provided): The ID of the product family this product belongs to")] int productFamilyId,
+        [Description("Required: (Ask user if not provided): The medical specialty ID")] int? medicalSpecialtyId = null,
+        [Description("Required: (Ask user if not provided): The product type ID ")] int? typeId = null,
+        [Description("Required: (Ask user if not provided): The product subtype ID ")] int? subtypeId = null,
+        [Description("Required: (Ask user if not provided): The functions ID ")] int? functionsId = null,
+        [Description("Required: (Ask user if not provided): The energy source ID ")] int? energySourceId = null,
+        [Description("Required: (Ask user if not provided): The radiation type ID ")] int? radiationTypeId = null,
+        [Description("Required: (Ask user if not provided): Whether the product emits radiation")] bool radiationEmitting = false)
     {
         using var scope = _serviceScopeFactory.CreateScope();
         var productService = scope.ServiceProvider.GetRequiredService<IProductService>();

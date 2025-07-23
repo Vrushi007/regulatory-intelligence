@@ -1,0 +1,746 @@
+[
+  {
+    "Code": "PHARMA",
+    "Value": "Pharmaceutical",
+    "Description": "Products related to drugs, biologics, and formulations.",
+    "Category": "ProductType",
+    "IsActive": true,
+    "DisplayOrder": 1,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": null
+  },
+  {
+    "Code": "MED_DEVICE",
+    "Value": "Medical Device",
+    "Description": "Products used for diagnosis, monitoring, or treatment of medical conditions.",
+    "Category": "ProductType",
+    "IsActive": true,
+    "DisplayOrder": 2,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": null
+  },
+  {
+    "Code": "API",
+    "Value": "Active Pharmaceutical Ingredient",
+    "Description": "Raw material or active component used in drug formulations.",
+    "Category": "ProductSubtype",
+    "IsActive": true,
+    "DisplayOrder": 1,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 1
+  },
+  {
+    "Code": "FDF",
+    "Value": "Finished Dosage Form",
+    "Description": "Final drug products like tablets, capsules, syrups.",
+    "Category": "ProductSubtype",
+    "IsActive": true,
+    "DisplayOrder": 2,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 1
+  },
+  {
+    "Code": "INJECTABLE",
+    "Value": "Injectables",
+    "Description": "Sterile preparations administered via injection.",
+    "Category": "ProductSubtype",
+    "IsActive": true,
+    "DisplayOrder": 3,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 1
+  },
+  {
+    "Code": "VACCINE",
+    "Value": "Vaccines",
+    "Description": "Biological preparations providing immunity.",
+    "Category": "ProductSubtype",
+    "IsActive": true,
+    "DisplayOrder": 4,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 1
+  },
+  {
+    "Code": "BIOLOGIC",
+    "Value": "Biologics",
+    "Description": "Products derived from living organisms.",
+    "Category": "ProductSubtype",
+    "IsActive": true,
+    "DisplayOrder": 5,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 1
+  },
+  {
+    "Code": "BIOSIMILAR",
+    "Value": "Biosimilars",
+    "Description": "Highly similar to approved biologics.",
+    "Category": "ProductSubtype",
+    "IsActive": true,
+    "DisplayOrder": 6,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 1
+  },
+  {
+    "Code": "TOPICAL",
+    "Value": "Topical Agents",
+    "Description": "Creams, ointments, gels applied to skin.",
+    "Category": "ProductSubtype",
+    "IsActive": true,
+    "DisplayOrder": 7,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 1
+  },
+  {
+    "Code": "OPHTHALMIC",
+    "Value": "Ophthalmic Products",
+    "Description": "Eye drops, ointments, intraocular injections.",
+    "Category": "ProductSubtype",
+    "IsActive": true,
+    "DisplayOrder": 8,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 1
+  },
+  {
+    "Code": "INHALATION",
+    "Value": "Inhalation Products",
+    "Description": "Inhalers, nebulizers for respiratory use.",
+    "Category": "ProductSubtype",
+    "IsActive": true,
+    "DisplayOrder": 9,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 1
+  },
+  {
+    "Code": "OSDF",
+    "Value": "Oral Solid Dosage Forms",
+    "Description": "Tablets, capsules, powders.",
+    "Category": "ProductSubtype",
+    "IsActive": true,
+    "DisplayOrder": 10,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 1
+  },
+  {
+    "Code": "OLDF",
+    "Value": "Oral Liquid Dosage Forms",
+    "Description": "Syrups, suspensions, elixirs.",
+    "Category": "ProductSubtype",
+    "IsActive": true,
+    "DisplayOrder": 11,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 1
+  },
+  {
+    "Code": "NUTRACEUTICAL",
+    "Value": "Nutraceuticals",
+    "Description": "Food-derived products with health benefits.",
+    "Category": "ProductSubtype",
+    "IsActive": true,
+    "DisplayOrder": 12,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 1
+  },
+  {
+    "Code": "RADIOPHARMA",
+    "Value": "Radiopharmaceuticals",
+    "Description": "Radioactive compounds for diagnosis or therapy.",
+    "Category": "ProductSubtype",
+    "IsActive": true,
+    "DisplayOrder": 13,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 1
+  },
+  {
+    "Code": "HERBAL",
+    "Value": "Herbal/AYUSH Products",
+    "Description": "Traditional Indian medicine-based formulations.",
+    "Category": "ProductSubtype",
+    "IsActive": true,
+    "DisplayOrder": 14,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 1
+  },
+  {
+    "Code": "CONTROLLED",
+    "Value": "Controlled/Substance Drugs",
+    "Description": "Narcotics and psychotropics under NDPS Act.",
+    "Category": "ProductSubtype",
+    "IsActive": true,
+    "DisplayOrder": 15,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 1
+  },
+  {
+    "Code": "IVD",
+    "Value": "In-Vitro Diagnostic Device",
+    "Description": "Devices used to perform tests on samples such as blood or tissue taken from the human body.",
+    "Category": "ProductSubtype",
+    "IsActive": true,
+    "DisplayOrder": 1,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "SAMD",
+    "Value": "Software as a Medical Device",
+    "Description": "Software intended to be used for medical purposes without being part of a hardware medical device.",
+    "Category": "ProductSubtype",
+    "IsActive": true,
+    "DisplayOrder": 2,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "IMPLANT",
+    "Value": "Implantable Device",
+    "Description": "Devices intended to be placed inside the human body, such as stents or pacemakers.",
+    "Category": "ProductSubtype",
+    "IsActive": true,
+    "DisplayOrder": 3,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "DIAGNOSTIC_IMAGING",
+    "Value": "Diagnostic Imaging Device",
+    "Description": "Devices used for imaging the body, such as MRI, CT, and X-ray machines.",
+    "Category": "ProductSubtype",
+    "IsActive": true,
+    "DisplayOrder": 4,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "SURGICAL",
+    "Value": "Surgical Instrument",
+    "Description": "Tools used during surgical procedures.",
+    "Category": "ProductSubtype",
+    "IsActive": true,
+    "DisplayOrder": 5,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "THERAPEUTIC",
+    "Value": "Therapeutic Equipment",
+    "Description": "Devices used to treat medical conditions, such as infusion pumps or laser therapy devices.",
+    "Category": "ProductSubtype",
+    "IsActive": true,
+    "DisplayOrder": 6,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "WEARABLE",
+    "Value": "Wearable Medical Device",
+    "Description": "Devices worn on the body to monitor health, such as fitness trackers or ECG monitors.",
+    "Category": "ProductSubtype",
+    "IsActive": true,
+    "DisplayOrder": 7,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "HOME_HEALTH",
+    "Value": "Home Healthcare Device",
+    "Description": "Devices designed for use in a home setting, such as glucometers or nebulizers.",
+    "Category": "ProductSubtype",
+    "IsActive": true,
+    "DisplayOrder": 8,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "CRITICAL_CARE",
+    "Value": "Critical Care Equipment",
+    "Description": "Devices used in intensive care settings, such as ventilators and defibrillators.",
+    "Category": "ProductSubtype",
+    "IsActive": true,
+    "DisplayOrder": 9,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "REHAB",
+    "Value": "Rehabilitation Device",
+    "Description": "Devices used to assist recovery and mobility, such as prosthetics or mobility aids.",
+    "Category": "ProductSubtype",
+    "IsActive": true,
+    "DisplayOrder": 10,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "FDA_CLASS_I",
+    "Value": "Class I",
+    "Description": "Low-risk devices subject to general controls. Often exempt from premarket notification (510(k)).",
+    "Category": "RiskClassification",
+    "IsActive": true,
+    "DisplayOrder": 1,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": null
+  },
+  {
+    "Code": "FDA_CLASS_II",
+    "Value": "Class II",
+    "Description": "Moderate-risk devices subject to general and special controls. Typically require 510(k) clearance.",
+    "Category": "RiskClassification",
+    "IsActive": true,
+    "DisplayOrder": 2,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": null
+  },
+  {
+    "Code": "FDA_CLASS_III",
+    "Value": "Class III",
+    "Description": "High-risk devices requiring premarket approval (PMA) with clinical data and rigorous review.",
+    "Category": "RiskClassification",
+    "IsActive": true,
+    "DisplayOrder": 3,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": null
+  },
+  {
+    "Code": "ENERGY_ELECTRIC",
+    "Value": "Electric",
+    "Description": "Device uses electrical energy as a power source.",
+    "Category": "EnergySource",
+    "IsActive": true,
+    "DisplayOrder": 1,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "ENERGY_HYDRAULIC",
+    "Value": "Hydraulic",
+    "Description": "Device operates using pressurized fluid systems.",
+    "Category": "EnergySource",
+    "IsActive": true,
+    "DisplayOrder": 2,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "ENERGY_THERMAL",
+    "Value": "Thermal/Heat",
+    "Description": "Device generates or uses heat for operation.",
+    "Category": "EnergySource",
+    "IsActive": true,
+    "DisplayOrder": 3,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "ENERGY_EM",
+    "Value": "Electromagnetic",
+    "Description": "Device uses electromagnetic fields or waves.",
+    "Category": "EnergySource",
+    "IsActive": true,
+    "DisplayOrder": 4,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "ENERGY_GRAVITY",
+    "Value": "Gravitational",
+    "Description": "Device relies on gravitational force for function.",
+    "Category": "EnergySource",
+    "IsActive": true,
+    "DisplayOrder": 5,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "ENERGY_GAS",
+    "Value": "Compressed Gas",
+    "Description": "Device uses compressed gas as an energy source.",
+    "Category": "EnergySource",
+    "IsActive": true,
+    "DisplayOrder": 6,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "ENERGY_POTENTIAL",
+    "Value": "Potential Energy",
+    "Description": "Device stores and releases potential energy.",
+    "Category": "EnergySource",
+    "IsActive": true,
+    "DisplayOrder": 7,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "ENERGY_SOLAR",
+    "Value": "Solar",
+    "Description": "Device is powered by solar energy.",
+    "Category": "EnergySource",
+    "IsActive": true,
+    "DisplayOrder": 8,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "ENERGY_MECHANICAL",
+    "Value": "Mechanical",
+    "Description": "Device operates through mechanical motion or force.",
+    "Category": "EnergySource",
+    "IsActive": true,
+    "DisplayOrder": 9,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "ENERGY_STATIC",
+    "Value": "Static",
+    "Description": "Device uses static energy or charge.",
+    "Category": "EnergySource",
+    "IsActive": true,
+    "DisplayOrder": 10,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "FUNC_STERILE",
+    "Value": "Sterile",
+    "Description": "Device is supplied sterile and intended to maintain sterility until use.",
+    "Category": "Function",
+    "IsActive": true,
+    "DisplayOrder": 1,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "FUNC_MEASURING",
+    "Value": "Measuring Functions",
+    "Description": "Device includes components that measure physiological or physical parameters.",
+    "Category": "Function",
+    "IsActive": true,
+    "DisplayOrder": 2,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "FUNC_REPROCESSED",
+    "Value": "Reprocessed or reused",
+    "Description": "Device is intended to be cleaned, sterilized, and reused.",
+    "Category": "Function",
+    "IsActive": true,
+    "DisplayOrder": 3,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "FUNC_SURGICAL",
+    "Value": "Surgical Use",
+    "Description": "Device is intended for use in surgical procedures.",
+    "Category": "Function",
+    "IsActive": true,
+    "DisplayOrder": 4,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "FUNC_SOFTWARE",
+    "Value": "Includes Software",
+    "Description": "Device includes or is composed of software (e.g., SaMD).",
+    "Category": "Function",
+    "IsActive": true,
+    "DisplayOrder": 5,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "MS_ANESTHESIOLOGY",
+    "Value": "Anesthesiology",
+    "Description": "Devices related to anesthesia delivery and monitoring.",
+    "Category": "MedicalSpeciality",
+    "IsActive": true,
+    "DisplayOrder": 1,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "MS_CARDIOVASCULAR",
+    "Value": "Cardiovascular",
+    "Description": "Devices for diagnosis and treatment of heart and vascular conditions.",
+    "Category": "MedicalSpeciality",
+    "IsActive": true,
+    "DisplayOrder": 2,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "MS_CHEMISTRY",
+    "Value": "Chemistry",
+    "Description": "Devices involving chemical analysis or diagnostics.",
+    "Category": "MedicalSpeciality",
+    "IsActive": true,
+    "DisplayOrder": 3,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "MS_DENTAL",
+    "Value": "Dental",
+    "Description": "Devices used in dental care and oral surgery.",
+    "Category": "MedicalSpeciality",
+    "IsActive": true,
+    "DisplayOrder": 4,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "MS_ENT",
+    "Value": "Ear, Nose, and Throat",
+    "Description": "Devices for otolaryngology and ENT procedures.",
+    "Category": "MedicalSpeciality",
+    "IsActive": true,
+    "DisplayOrder": 5,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "MS_GASTRO_URO",
+    "Value": "Gastroenterology and Urology",
+    "Description": "Devices for digestive and urinary systems.",
+    "Category": "MedicalSpeciality",
+    "IsActive": true,
+    "DisplayOrder": 6,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "MS_SURGERY",
+    "Value": "General and Plastic Surgery",
+    "Description": "Devices used in general and reconstructive surgery.",
+    "Category": "MedicalSpeciality",
+    "IsActive": true,
+    "DisplayOrder": 7,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "MS_HOSPITAL",
+    "Value": "General Hospital",
+    "Description": "Devices used in general hospital settings.",
+    "Category": "MedicalSpeciality",
+    "IsActive": true,
+    "DisplayOrder": 8,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "MS_HEMATOLOGY",
+    "Value": "Hematology",
+    "Description": "Devices for blood analysis and disorders.",
+    "Category": "MedicalSpeciality",
+    "IsActive": true,
+    "DisplayOrder": 9,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "MS_IMMUNOLOGY",
+    "Value": "Immunology",
+    "Description": "Devices related to immune system diagnostics or therapy.",
+    "Category": "MedicalSpeciality",
+    "IsActive": true,
+    "DisplayOrder": 10,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "MS_MICROBIOLOGY",
+    "Value": "Microbiology",
+    "Description": "Devices for detecting and analyzing microorganisms.",
+    "Category": "MedicalSpeciality",
+    "IsActive": true,
+    "DisplayOrder": 11,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "MS_GENETICS",
+    "Value": "Material and Genetics",
+    "Description": "Devices involving genetic testing or biomaterials.",
+    "Category": "MedicalSpeciality",
+    "IsActive": true,
+    "DisplayOrder": 12,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "MS_NEUROLOGY",
+    "Value": "Neurology",
+    "Description": "Devices for diagnosing or treating neurological conditions.",
+    "Category": "MedicalSpeciality",
+    "IsActive": true,
+    "DisplayOrder": 13,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "MS_OBGYN",
+    "Value": "Obstetrical and Gynecological",
+    "Description": "Devices for women's reproductive health.",
+    "Category": "MedicalSpeciality",
+    "IsActive": true,
+    "DisplayOrder": 14,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "MS_OPHTHALMIC",
+    "Value": "Ophthalmic",
+    "Description": "Devices for eye care and vision correction.",
+    "Category": "MedicalSpeciality",
+    "IsActive": true,
+    "DisplayOrder": 15,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "MS_ORTHOPEDIC",
+    "Value": "Orthopedic",
+    "Description": "Devices for bones, joints, and musculoskeletal system.",
+    "Category": "MedicalSpeciality",
+    "IsActive": true,
+    "DisplayOrder": 16,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "MS_PATHOLOGY",
+    "Value": "Pathology",
+    "Description": "Devices used in tissue and disease analysis.",
+    "Category": "MedicalSpeciality",
+    "IsActive": true,
+    "DisplayOrder": 17,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "MS_PHYSICAL_MED",
+    "Value": "Physical Medicine",
+    "Description": "Devices for rehabilitation and physical therapy.",
+    "Category": "MedicalSpeciality",
+    "IsActive": true,
+    "DisplayOrder": 18,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "MS_RADIOLOGY",
+    "Value": "Radiology",
+    "Description": "Devices for imaging and radiological diagnostics.",
+    "Category": "MedicalSpeciality",
+    "IsActive": true,
+    "DisplayOrder": 19,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "MS_TOXICOLOGY",
+    "Value": "Toxicology",
+    "Description": "Devices for detecting toxins and harmful substances.",
+    "Category": "MedicalSpeciality",
+    "IsActive": true,
+    "DisplayOrder": 20,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "MS_GMP_EXEMPT",
+    "Value": "GMP EXEMPT",
+    "Description": "Devices exempt from Good Manufacturing Practices.",
+    "Category": "MedicalSpeciality",
+    "IsActive": true,
+    "DisplayOrder": 21,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2
+  },
+  {
+    "Code": "FDA_NDA",
+    "Value": "NDA",
+    "Description": "New Drug Application (NDA)",
+    "Category": "SubmissionActivity",
+    "IsActive": true,
+    "DisplayOrder": 3,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ModifiedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 1,
+    "Country": "USA"
+  },
+  {
+    "Code": "FDA_ANDA",
+    "Value": "ANDA",
+    "Description": "Abbreviated New Drug Application (ANDA)",
+    "Category": "SubmissionActivity",
+    "IsActive": true,
+    "DisplayOrder": 4,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ModifiedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 1,
+    "Country": "USA"
+  },
+  {
+    "Code": "FDA_BLA",
+    "Value": "BLA",
+    "Description": "Biologics License Application (BLA)",
+    "Category": "SubmissionActivity",
+    "IsActive": true,
+    "DisplayOrder": 5,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ModifiedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 1,
+    "Country": "USA"
+  },
+  {
+    "Code": "FDA_510K",
+    "Value": "510(k)",
+    "Description": "Premarket Notification [510(k)]",
+    "Category": "SubmissionActivity",
+    "IsActive": true,
+    "DisplayOrder": 6,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ModifiedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2,
+    "Country": "USA"
+  },
+  {
+    "Code": "FDA_PMA",
+    "Value": "PMA",
+    "Description": "Premarket Approval (PMA)",
+    "Category": "SubmissionActivity",
+    "IsActive": true,
+    "DisplayOrder": 7,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ModifiedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 2,
+    "Country": "USA"
+  },
+  {
+    "Code": "EU_MDR",
+    "Value": "MDR",
+    "Description": "Medical Device Regulation",
+    "Category": "SubmissionActivity",
+    "IsActive": true,
+    "DisplayOrder": 1,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ModifiedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 1,
+    "Country": "ALB,AND,ARM,AUT,AZE,BLR,BEL,BIH,BGR,HRV,CYP,CZE,DNK,EST,FRO,FIN,FRA,GEO,DEU,GRC,HUN,ISL,IRL,ITA,KAZ,XKX,LVA,LIE,LTU,LUX,MLT,MDA,MCO,MNE,NLD,MKD,NOR,POL,PRT,ROU,RUS,SMR,SRB,SVK,SVN,ESP,SWE,CHE,TUR,UKR,GBR,VAT,EU"
+  },
+  {
+    "Code": "EU_MDD",
+    "Value": "MDD",
+    "Description": "Medical Device Directive",
+    "Category": "SubmissionActivity",
+    "IsActive": true,
+    "DisplayOrder": 2,
+    "CreatedAt": "2025-07-21T00:00:00Z",
+    "ModifiedAt": "2025-07-21T00:00:00Z",
+    "ParentId": 1,
+    "Country": "ALB,AND,ARM,AUT,AZE,BLR,BEL,BIH,BGR,HRV,CYP,CZE,DNK,EST,FRO,FIN,FRA,GEO,DEU,GRC,HUN,ISL,IRL,ITA,KAZ,XKX,LVA,LIE,LTU,LUX,MLT,MDA,MCO,MNE,NLD,MKD,NOR,POL,PRT,ROU,RUS,SMR,SRB,SVK,SVN,ESP,SWE,CHE,TUR,UKR,GBR,VAT,EU"
+  }
+]

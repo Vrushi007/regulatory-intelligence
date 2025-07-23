@@ -47,7 +47,7 @@ public class ApplicationTools
         [Description("The serial number of the application")] string serialNum,
         [Description("Required: Ask user if not entered: The name of the application")] string name,
         [Description("Required: Ask user if not entered: The ID of the country this application belongs to")] int countryId,
-        [Description("Required: Ask user if not entered: Array of product IDs to associate with this application (comma-separated)")] string productIds,
+        [Description("Required(At least 1 product required): Ask user if not entered: Array of product IDs to associate with this application (comma-separated)")] string productIds,
         [Description("The type of the application")] string type = "",
         [Description("The application number")] string appNumber = "",
         [Description("Required: Ask user if not entered: The status of the application")] string status = "",

@@ -33,6 +33,7 @@ builder.Services.AddMcpServer().WithStdioServerTransport()
     .WithTools<ProductTools>()
     .WithTools<ProductFamilyTools>()
     .WithTools<ApplicationTools>()
+    .WithTools<SubmissionTools>()
     .WithTools<ControlledVocabularyTools>();
 
 builder.Logging.AddConsole(options =>
@@ -44,7 +45,9 @@ builder.Services.AddScoped<ICountryService, CountryService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductFamilyService, ProductFamilyService>();
 builder.Services.AddScoped<IApplicationService, ApplicationService>();
+builder.Services.AddScoped<ISubmissionService, SubmissionService>();
 builder.Services.AddScoped<IControlledVocabularyService, ControlledVocabularyService>();
+builder.Services.AddScoped<DataSeederService>();
 var host = builder.Build();
 
 // Ensure database is created and seed initial data
@@ -60,12 +63,17 @@ static async Task InitializeDatabaseAsync(IHost host)
     var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
     var countryService = scope.ServiceProvider.GetRequiredService<ICountryService>();
     var productFamilyService = scope.ServiceProvider.GetRequiredService<IProductFamilyService>();
+    var dataSeederService = scope.ServiceProvider.GetRequiredService<DataSeederService>();
 
     try
     {
         logger.LogInformation("Applying database migrations...");
         await context.Database.MigrateAsync();
         logger.LogInformation("Database is ready!");
+
+        // Seed initial data from JSON files
+        logger.LogInformation("Starting data seeding process...");
+        await dataSeederService.SeedDataAsync();
 
         logger.LogInformation("Database initialization completed. Ready for user operations.");
     }

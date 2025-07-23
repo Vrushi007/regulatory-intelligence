@@ -1,0 +1,1346 @@
+[
+  {
+    "Name": "Afghanistan",
+    "Code": "AFG",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Albania",
+    "Code": "ALB",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Algeria",
+    "Code": "DZA",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Andorra",
+    "Code": "AND",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Angola",
+    "Code": "AGO",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Argentina",
+    "Code": "ARG",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Armenia",
+    "Code": "ARM",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Australia",
+    "Code": "AUS",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Austria",
+    "Code": "AUT",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Azerbaijan",
+    "Code": "AZE",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Bahamas",
+    "Code": "BHS",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Bahrain",
+    "Code": "BHR",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Bangladesh",
+    "Code": "BGD",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Barbados",
+    "Code": "BRB",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Belarus",
+    "Code": "BLR",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Belgium",
+    "Code": "BEL",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Belize",
+    "Code": "BLZ",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Benin",
+    "Code": "BEN",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Bhutan",
+    "Code": "BTN",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Bolivia",
+    "Code": "BOL",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Bosnia and Herzegovina",
+    "Code": "BIH",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Botswana",
+    "Code": "BWA",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Brazil",
+    "Code": "BRA",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Brunei",
+    "Code": "BRN",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Bulgaria",
+    "Code": "BGR",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Burkina Faso",
+    "Code": "BFA",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Burundi",
+    "Code": "BDI",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Cambodia",
+    "Code": "KHM",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Cameroon",
+    "Code": "CMR",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Canada",
+    "Code": "CAN",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Cape Verde",
+    "Code": "CPV",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Central African Republic",
+    "Code": "CAF",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Chad",
+    "Code": "TCD",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Chile",
+    "Code": "CHL",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "China",
+    "Code": "CHN",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Colombia",
+    "Code": "COL",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Comoros",
+    "Code": "COM",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Congo (Brazzaville)",
+    "Code": "COG",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Congo (Kinshasa)",
+    "Code": "COD",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Costa Rica",
+    "Code": "CRI",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Croatia",
+    "Code": "HRV",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Cuba",
+    "Code": "CUB",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Cyprus",
+    "Code": "CYP",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Czech Republic",
+    "Code": "CZE",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Denmark",
+    "Code": "DNK",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Djibouti",
+    "Code": "DJI",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Dominica",
+    "Code": "DMA",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Dominican Republic",
+    "Code": "DOM",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Ecuador",
+    "Code": "ECU",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Egypt",
+    "Code": "EGY",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "El Salvador",
+    "Code": "SLV",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Equatorial Guinea",
+    "Code": "GNQ",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Eritrea",
+    "Code": "ERI",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Estonia",
+    "Code": "EST",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Eswatini",
+    "Code": "SWZ",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Ethiopia",
+    "Code": "ETH",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Fiji",
+    "Code": "FJI",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Finland",
+    "Code": "FIN",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "France",
+    "Code": "FRA",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Gabon",
+    "Code": "GAB",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Gambia",
+    "Code": "GMB",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Georgia",
+    "Code": "GEO",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Germany",
+    "Code": "DEU",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Ghana",
+    "Code": "GHA",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Greece",
+    "Code": "GRC",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Grenada",
+    "Code": "GRD",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Guatemala",
+    "Code": "GTM",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Guinea",
+    "Code": "GIN",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Guinea-Bissau",
+    "Code": "GNB",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Guyana",
+    "Code": "GUY",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Haiti",
+    "Code": "HTI",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Honduras",
+    "Code": "HND",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Hungary",
+    "Code": "HUN",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Iceland",
+    "Code": "ISL",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "India",
+    "Code": "IND",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Indonesia",
+    "Code": "IDN",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Iran",
+    "Code": "IRN",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Iraq",
+    "Code": "IRQ",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Ireland",
+    "Code": "IRL",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Israel",
+    "Code": "ISR",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Italy",
+    "Code": "ITA",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Jamaica",
+    "Code": "JAM",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Japan",
+    "Code": "JPN",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Jordan",
+    "Code": "JOR",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Kazakhstan",
+    "Code": "KAZ",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Kenya",
+    "Code": "KEN",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Kiribati",
+    "Code": "KIR",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Kuwait",
+    "Code": "KWT",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Kyrgyzstan",
+    "Code": "KGZ",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Laos",
+    "Code": "LAO",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Latvia",
+    "Code": "LVA",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Lebanon",
+    "Code": "LBN",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Lesotho",
+    "Code": "LSO",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Liberia",
+    "Code": "LBR",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Libya",
+    "Code": "LBY",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Liechtenstein",
+    "Code": "LIE",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Lithuania",
+    "Code": "LTU",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Luxembourg",
+    "Code": "LUX",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Madagascar",
+    "Code": "MDG",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Malawi",
+    "Code": "MWI",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Malaysia",
+    "Code": "MYS",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Maldives",
+    "Code": "MDV",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Mali",
+    "Code": "MLI",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Malta",
+    "Code": "MLT",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Marshall Islands",
+    "Code": "MHL",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Mauritania",
+    "Code": "MRT",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Mauritius",
+    "Code": "MUS",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Mexico",
+    "Code": "MEX",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Micronesia",
+    "Code": "FSM",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Moldova",
+    "Code": "MDA",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Monaco",
+    "Code": "MCO",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Mongolia",
+    "Code": "MNG",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Montenegro",
+    "Code": "MNE",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Morocco",
+    "Code": "MAR",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Mozambique",
+    "Code": "MOZ",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Myanmar",
+    "Code": "MMR",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Namibia",
+    "Code": "NAM",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Nauru",
+    "Code": "NRU",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Nepal",
+    "Code": "NPL",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Netherlands",
+    "Code": "NLD",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "New Zealand",
+    "Code": "NZL",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Nicaragua",
+    "Code": "NIC",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Niger",
+    "Code": "NER",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Nigeria",
+    "Code": "NGA",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "North Korea",
+    "Code": "PRK",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "North Macedonia",
+    "Code": "MKD",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Norway",
+    "Code": "NOR",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Oman",
+    "Code": "OMN",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Pakistan",
+    "Code": "PAK",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Palau",
+    "Code": "PLW",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Panama",
+    "Code": "PAN",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Papua New Guinea",
+    "Code": "PNG",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Paraguay",
+    "Code": "PRY",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Peru",
+    "Code": "PER",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Philippines",
+    "Code": "PHL",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Poland",
+    "Code": "POL",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Portugal",
+    "Code": "PRT",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Qatar",
+    "Code": "QAT",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Romania",
+    "Code": "ROU",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Russia",
+    "Code": "RUS",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Rwanda",
+    "Code": "RWA",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Saint Kitts and Nevis",
+    "Code": "KNA",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Saint Lucia",
+    "Code": "LCA",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Saint Vincent and the Grenadines",
+    "Code": "VCT",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Samoa",
+    "Code": "WSM",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "San Marino",
+    "Code": "SMR",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Sao Tome and Principe",
+    "Code": "STP",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Saudi Arabia",
+    "Code": "SAU",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Senegal",
+    "Code": "SEN",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Serbia",
+    "Code": "SRB",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Seychelles",
+    "Code": "SYC",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Sierra Leone",
+    "Code": "SLE",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Singapore",
+    "Code": "SGP",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Slovakia",
+    "Code": "SVK",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Slovenia",
+    "Code": "SVN",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Solomon Islands",
+    "Code": "SLB",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Somalia",
+    "Code": "SOM",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "South Africa",
+    "Code": "ZAF",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "South Korea",
+    "Code": "KOR",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "South Sudan",
+    "Code": "SSD",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Spain",
+    "Code": "ESP",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Sri Lanka",
+    "Code": "LKA",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Sudan",
+    "Code": "SDN",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Suriname",
+    "Code": "SUR",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Sweden",
+    "Code": "SWE",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Switzerland",
+    "Code": "CHE",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Syria",
+    "Code": "SYR",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Taiwan",
+    "Code": "TWN",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Tajikistan",
+    "Code": "TJK",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Tanzania",
+    "Code": "TZA",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Thailand",
+    "Code": "THA",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Timor-Leste",
+    "Code": "TLS",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Togo",
+    "Code": "TGO",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Tonga",
+    "Code": "TON",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Trinidad and Tobago",
+    "Code": "TTO",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Tunisia",
+    "Code": "TUN",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Turkey",
+    "Code": "TUR",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Turkmenistan",
+    "Code": "TKM",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Tuvalu",
+    "Code": "TUV",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Uganda",
+    "Code": "UGA",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Ukraine",
+    "Code": "UKR",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "United Arab Emirates",
+    "Code": "ARE",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "United Kingdom",
+    "Code": "GBR",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "United States of America",
+    "Code": "USA",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Uruguay",
+    "Code": "URY",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Uzbekistan",
+    "Code": "UZB",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Vanuatu",
+    "Code": "VUT",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Venezuela",
+    "Code": "VEN",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Vietnam",
+    "Code": "VNM",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Yemen",
+    "Code": "YEM",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Zambia",
+    "Code": "ZMB",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  },
+  {
+    "Name": "Zimbabwe",
+    "Code": "ZWE",
+    "IsActive": true,
+    "CreatedAt": "2025-07-10T09:48:06",
+    "ModifiedAt": "2025-07-10T09:48:06"
+  }
+]

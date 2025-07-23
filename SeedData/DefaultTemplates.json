@@ -1,0 +1,26 @@
+[
+  {
+    "Name": "FDA_PMA",
+    "SubmissionType": "FDA_PMA",
+    "Country": "USA",
+    "IsActive": true
+  },
+  {
+    "Name": "FDA_510(k)",
+    "SubmissionType": "FDA_510K",
+    "Country": "USA",
+    "IsActive": true
+  },
+  {
+    "Name": "EU_MDR",
+    "SubmissionType": "EU_MDR",
+    "Country": "EU",
+    "IsActive": true
+  },
+  {
+    "Name": "EU_MDD",
+    "SubmissionType": "EU_MDD",
+    "Country": "EU",
+    "IsActive": true
+  }
+]

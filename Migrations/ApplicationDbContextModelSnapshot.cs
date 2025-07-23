@@ -120,6 +120,9 @@ namespace rim_poc.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
+                    b.Property<string>("Country")
+                        .HasColumnType("text");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
@@ -189,6 +192,47 @@ namespace rim_poc.Migrations
                         .IsUnique();
 
                     b.ToTable("Countries");
+                });
+
+            modelBuilder.Entity("RimPoc.Data.DefaultTemplates", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime?>("ModifiedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
+
+                    b.Property<int>("SubmissionTypeId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsActive");
+
+                    b.HasIndex("SubmissionTypeId");
+
+                    b.HasIndex("Country", "SubmissionTypeId", "Name")
+                        .IsUnique();
+
+                    b.ToTable("DefaultTemplates");
                 });
 
             modelBuilder.Entity("RimPoc.Data.Product", b =>
@@ -303,6 +347,67 @@ namespace rim_poc.Migrations
                     b.ToTable("ProductFamilies");
                 });
 
+            modelBuilder.Entity("RimPoc.Data.Submission", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ApplicationId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("SequenceNumber")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("character varying(10)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.Property<DateTime?>("StatusDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("SubmissionActivityId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime?>("SubmissionDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("SubmissionNumber")
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Status");
+
+                    b.HasIndex("SubmissionActivityId");
+
+                    b.HasIndex("SubmissionNumber");
+
+                    b.HasIndex("ApplicationId", "SequenceNumber")
+                        .IsUnique();
+
+                    b.ToTable("Submissions");
+                });
+
             modelBuilder.Entity("ApplicationProduct", b =>
                 {
                     b.HasOne("RimPoc.Data.Application", null)
@@ -344,6 +449,17 @@ namespace rim_poc.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Parent");
+                });
+
+            modelBuilder.Entity("RimPoc.Data.DefaultTemplates", b =>
+                {
+                    b.HasOne("RimPoc.Data.ControlledVocabulary", "SubmissionType")
+                        .WithMany()
+                        .HasForeignKey("SubmissionTypeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("SubmissionType");
                 });
 
             modelBuilder.Entity("RimPoc.Data.Product", b =>
@@ -397,6 +513,30 @@ namespace rim_poc.Migrations
                     b.Navigation("ProductType");
 
                     b.Navigation("RadiationType");
+                });
+
+            modelBuilder.Entity("RimPoc.Data.Submission", b =>
+                {
+                    b.HasOne("RimPoc.Data.Application", "Application")
+                        .WithMany("Submissions")
+                        .HasForeignKey("ApplicationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RimPoc.Data.ControlledVocabulary", "SubmissionActivity")
+                        .WithMany()
+                        .HasForeignKey("SubmissionActivityId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Application");
+
+                    b.Navigation("SubmissionActivity");
+                });
+
+            modelBuilder.Entity("RimPoc.Data.Application", b =>
+                {
+                    b.Navigation("Submissions");
                 });
 
             modelBuilder.Entity("RimPoc.Data.ControlledVocabulary", b =>

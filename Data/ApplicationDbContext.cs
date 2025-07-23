@@ -13,7 +13,9 @@ public class ApplicationDbContext : DbContext
     public DbSet<ProductFamily> ProductFamilies { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<Application> Applications { get; set; }
+    public DbSet<Submission> Submissions { get; set; }
     public DbSet<ControlledVocabulary> ControlledVocabularies { get; set; }
+    public DbSet<DefaultTemplates> DefaultTemplates { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -154,6 +156,41 @@ public class ApplicationDbContext : DbContext
                     j.ToTable("ApplicationProducts");
                 });
 
+        // Configure Submission entity
+        modelBuilder.Entity<Submission>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.SequenceNumber)
+                .IsRequired()
+                .HasMaxLength(10);
+            entity.Property(e => e.Description)
+                .HasMaxLength(500);
+            entity.Property(e => e.SubmissionNumber)
+                .HasMaxLength(100);
+            entity.Property(e => e.Status)
+                .HasMaxLength(50);
+
+            // Configure relationship with Application
+            entity.HasOne(e => e.Application)
+                .WithMany(a => a.Submissions)
+                .HasForeignKey(e => e.ApplicationId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .IsRequired();
+
+            // Configure relationship with ControlledVocabulary for Submission Activity
+            entity.HasOne(e => e.SubmissionActivity)
+                .WithMany() // No back navigation needed
+                .HasForeignKey(e => e.SubmissionActivityId)
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
+
+            // Indexes for better performance
+            entity.HasIndex(e => new { e.ApplicationId, e.SequenceNumber })
+                .IsUnique(); // Unique sequence number per application
+            entity.HasIndex(e => e.SubmissionNumber);
+            entity.HasIndex(e => e.Status);
+        });
+
         // Configure ControlledVocabulary entity
         modelBuilder.Entity<ControlledVocabulary>(entity =>
         {
@@ -169,6 +206,7 @@ public class ApplicationDbContext : DbContext
             entity.Property(e => e.Category)
                 .IsRequired()
                 .HasMaxLength(50);
+            entity.Property(e => e.Country); // No length restriction for comma-separated values
 
             // Self-referencing relationship for Parent-Child (e.g., ProductType -> ProductSubtypes)
             entity.HasOne(e => e.Parent)
@@ -181,6 +219,29 @@ public class ApplicationDbContext : DbContext
                 .IsUnique();
             entity.HasIndex(e => e.Category);
             entity.HasIndex(e => e.ParentId);
+        });
+
+        // Configure DefaultTemplates entity
+        modelBuilder.Entity<DefaultTemplates>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Name)
+                .IsRequired()
+                .HasMaxLength(200);
+            entity.Property(e => e.Country)
+                .IsRequired();
+
+            // Configure relationship with ControlledVocabulary for SubmissionType
+            entity.HasOne(e => e.SubmissionType)
+                .WithMany() // No back navigation needed
+                .HasForeignKey(e => e.SubmissionTypeId)
+                .OnDelete(DeleteBehavior.Restrict)
+                .IsRequired();
+
+            // Indexes for better performance
+            entity.HasIndex(e => new { e.Country, e.SubmissionTypeId, e.Name })
+                .IsUnique(); // Unique template per country, submission type, and name
+            entity.HasIndex(e => e.IsActive);
         });
     }
 }

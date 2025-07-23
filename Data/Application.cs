@@ -39,6 +39,10 @@ public class Application
     // ✅ New many-to-many relationship
     public ICollection<Product> Products { get; set; } = new List<Product>();
 
+    // One-to-many relationship with Submissions
+    [JsonIgnore]
+    public ICollection<Submission> Submissions { get; set; } = new List<Submission>();
+
     // Navigation property to ControlledVocabulary for Risk
     [JsonIgnore]
     public ControlledVocabulary? RiskVocabulary { get; set; }
