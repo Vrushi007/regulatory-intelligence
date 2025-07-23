@@ -16,6 +16,8 @@ public class ApplicationDbContext : DbContext
     public DbSet<Submission> Submissions { get; set; }
     public DbSet<ControlledVocabulary> ControlledVocabularies { get; set; }
     public DbSet<DefaultTemplates> DefaultTemplates { get; set; }
+    public DbSet<DefaultTemplateContent> DefaultTemplateContents { get; set; }
+    public DbSet<SubmissionToC> SubmissionToCs { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -242,6 +244,70 @@ public class ApplicationDbContext : DbContext
             entity.HasIndex(e => new { e.Country, e.SubmissionTypeId, e.Name })
                 .IsUnique(); // Unique template per country, submission type, and name
             entity.HasIndex(e => e.IsActive);
+        });
+
+        // Configure DefaultTemplateContent entity
+        modelBuilder.Entity<DefaultTemplateContent>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Parent)
+                .IsRequired()
+                .HasMaxLength(300);
+            entity.Property(e => e.Section)
+                .IsRequired()
+                .HasMaxLength(300);
+            entity.Property(e => e.LeafTitle)
+                .HasMaxLength(300);
+            entity.Property(e => e.FileName)
+                .HasMaxLength(255);
+            entity.Property(e => e.Href)
+                .HasMaxLength(1000);
+
+            // Configure relationship with DefaultTemplates
+            entity.HasOne(e => e.Template)
+                .WithMany() // No back navigation needed
+                .HasForeignKey(e => e.TemplateId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .IsRequired();
+
+            // Indexes for better performance
+            entity.HasIndex(e => e.TemplateId);
+            entity.HasIndex(e => e.Parent);
+            entity.HasIndex(e => e.Section);
+        });
+
+        // Configure SubmissionToC entity
+        modelBuilder.Entity<SubmissionToC>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Parent)
+                .IsRequired()
+                .HasMaxLength(300);
+            entity.Property(e => e.Section)
+                .IsRequired()
+                .HasMaxLength(300);
+            entity.Property(e => e.LeafTitle)
+                .HasMaxLength(300);
+            entity.Property(e => e.FileName)
+                .HasMaxLength(255);
+            entity.Property(e => e.Href)
+                .HasMaxLength(1000);
+
+            entity.Property(e => e.StartDate);
+            entity.Property(e => e.EstimatedDays);
+            entity.Property(e => e.EndDate);
+
+            // Configure relationship with Submission
+            entity.HasOne(e => e.Submission)
+                .WithMany() // No back navigation needed
+                .HasForeignKey(e => e.SubmissionId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .IsRequired();
+
+            // Indexes for better performance
+            entity.HasIndex(e => e.SubmissionId);
+            entity.HasIndex(e => e.Parent);
+            entity.HasIndex(e => e.Section);
         });
     }
 }

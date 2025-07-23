@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using RimPoc.Data;
@@ -11,9 +12,11 @@ using RimPoc.Data;
 namespace rim_poc.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250723094532_AddDefaultTemplateContent")]
+    partial class AddDefaultTemplateContent
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -455,62 +458,6 @@ namespace rim_poc.Migrations
                     b.ToTable("Submissions");
                 });
 
-            modelBuilder.Entity("RimPoc.Data.SubmissionToC", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime?>("EndDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<int?>("EstimatedDays")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("FileName")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)");
-
-                    b.Property<string>("Href")
-                        .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("character varying(1000)");
-
-                    b.Property<string>("LeafTitle")
-                        .IsRequired()
-                        .HasMaxLength(300)
-                        .HasColumnType("character varying(300)");
-
-                    b.Property<string>("Parent")
-                        .IsRequired()
-                        .HasMaxLength(300)
-                        .HasColumnType("character varying(300)");
-
-                    b.Property<string>("Section")
-                        .IsRequired()
-                        .HasMaxLength(300)
-                        .HasColumnType("character varying(300)");
-
-                    b.Property<DateTime?>("StartDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<int>("SubmissionId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Parent");
-
-                    b.HasIndex("Section");
-
-                    b.HasIndex("SubmissionId");
-
-                    b.ToTable("SubmissionToCs");
-                });
-
             modelBuilder.Entity("ApplicationProduct", b =>
                 {
                     b.HasOne("RimPoc.Data.Application", null)
@@ -646,17 +593,6 @@ namespace rim_poc.Migrations
                     b.Navigation("Application");
 
                     b.Navigation("SubmissionActivity");
-                });
-
-            modelBuilder.Entity("RimPoc.Data.SubmissionToC", b =>
-                {
-                    b.HasOne("RimPoc.Data.Submission", "Submission")
-                        .WithMany()
-                        .HasForeignKey("SubmissionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Submission");
                 });
 
             modelBuilder.Entity("RimPoc.Data.Application", b =>

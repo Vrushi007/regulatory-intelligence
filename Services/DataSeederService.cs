@@ -34,6 +34,8 @@ public class DataSeederService
             await SeedControlledVocabulariesAsync();
             await _context.SaveChangesAsync();
             await SeedDefaultTemplatesAsync();
+            await _context.SaveChangesAsync();
+            await SeedDefaultTemplateContentsAsync();
 
             // Final save for any remaining changes
             await _context.SaveChangesAsync();
@@ -250,6 +252,53 @@ public class DataSeederService
         _logger.LogInformation("Added {Count} default templates to seeding queue.", defaultTemplates.Count);
     }
 
+    private async Task SeedDefaultTemplateContentsAsync()
+    {
+        // Check if DefaultTemplateContents already exist
+        if (await _context.DefaultTemplateContents.AnyAsync())
+        {
+            _logger.LogInformation("DefaultTemplateContents already exist. Skipping seeding.");
+            return;
+        }
+
+        var jsonPath = Path.Combine("SeedData", "DefaultTemplateContents.json");
+        if (!File.Exists(jsonPath))
+        {
+            _logger.LogWarning("DefaultTemplateContents.json file not found at {Path}", jsonPath);
+            return;
+        }
+
+        var jsonContent = await File.ReadAllTextAsync(jsonPath);
+        var contentDtos = JsonSerializer.Deserialize<List<DefaultTemplateContentDto>>(jsonContent);
+
+        if (contentDtos == null || !contentDtos.Any())
+        {
+            _logger.LogWarning("No default template contents found in seed data.");
+            return;
+        }
+
+        var defaultTemplateContents = new List<DefaultTemplateContent>();
+
+        foreach (var dto in contentDtos)
+        {
+            var content = new DefaultTemplateContent
+            {
+                Id = dto.Id,
+                Parent = dto.Parent,
+                Section = dto.Section,
+                LeafTitle = dto.LeafTitle,
+                FileName = dto.FileName,
+                Href = dto.Href,
+                TemplateId = dto.TemplateId
+            };
+
+            defaultTemplateContents.Add(content);
+        }
+
+        _context.DefaultTemplateContents.AddRange(defaultTemplateContents);
+        _logger.LogInformation("Added {Count} default template contents to seeding queue.", defaultTemplateContents.Count);
+    }
+
     // DTOs for JSON deserialization
     private class CountryDto
     {
@@ -281,5 +330,16 @@ public class DataSeederService
         public string SubmissionType { get; set; } = string.Empty; // Code from ControlledVocabulary
         public string Country { get; set; } = string.Empty; // Code from Country
         public bool IsActive { get; set; }
+    }
+
+    private class DefaultTemplateContentDto
+    {
+        public int Id { get; set; }
+        public string Parent { get; set; } = string.Empty;
+        public string Section { get; set; } = string.Empty;
+        public string LeafTitle { get; set; } = string.Empty;
+        public string FileName { get; set; } = string.Empty;
+        public string Href { get; set; } = string.Empty;
+        public int TemplateId { get; set; }
     }
 }
