@@ -16,21 +16,12 @@ public class SubmissionTools
         _serviceScopeFactory = serviceScopeFactory;
     }
 
-    [McpServerTool, Description("Get all submissions")]
-    public async Task<List<Submission>> GetAllSubmissionsAsync()
-    {
-        using var scope = _serviceScopeFactory.CreateScope();
-        var submissionService = scope.ServiceProvider.GetRequiredService<ISubmissionService>();
-        return (List<Submission>)await submissionService.GetAllActiveAsync();
-    }
-
-    // [McpServerTool, Description("Get a submission by its ID")]
-    // public async Task<Submission?> GetSubmissionByIdAsync(
-    //     [Description("The ID of the submission to retrieve")] int id)
+    // [McpServerTool, Description("Get all submissions")]
+    // public async Task<List<Submission>> GetAllSubmissionsAsync()
     // {
     //     using var scope = _serviceScopeFactory.CreateScope();
     //     var submissionService = scope.ServiceProvider.GetRequiredService<ISubmissionService>();
-    //     return await submissionService.GetByIdAsync(id);
+    //     return (List<Submission>)await submissionService.GetAllActiveAsync();
     // }
 
     [McpServerTool, Description("Get all submissions for a specific application")]
@@ -42,45 +33,14 @@ public class SubmissionTools
         return (List<Submission>)await submissionService.GetByApplicationIdAsync(applicationId);
     }
 
-    // [McpServerTool, Description("Get submissions by status")]
-    // public async Task<List<Submission>> GetSubmissionsByStatusAsync(
-    //     [Description("The status to filter by (e.g., Draft, Submitted, Approved, Rejected)")] string status)
-    // {
-    //     using var scope = _serviceScopeFactory.CreateScope();
-    //     var submissionService = scope.ServiceProvider.GetRequiredService<ISubmissionService>();
-    //     return (List<Submission>)await submissionService.GetByStatusAsync(status);
-    // }
-
-    // [McpServerTool, Description("Get submissions by submission activity")]
-    // public async Task<List<Submission>> GetSubmissionsByActivityIdAsync(
-    //     [Description("The ID of the submission activity (from ControlledVocabulary with category 'SubmissionActivity')")] int submissionActivityId)
-    // {
-    //     using var scope = _serviceScopeFactory.CreateScope();
-    //     var submissionService = scope.ServiceProvider.GetRequiredService<ISubmissionService>();
-    //     return (List<Submission>)await submissionService.GetBySubmissionActivityIdAsync(submissionActivityId);
-    // }
-
-    // [McpServerTool, Description("Get a submission by application ID and sequence number")]
-    // public async Task<Submission?> GetSubmissionByApplicationAndSequenceAsync(
-    //     [Description("The ID of the application")] int applicationId,
-    //     [Description("The sequence number (e.g., 0000, 0001)")] string sequenceNumber)
-    // {
-    //     using var scope = _serviceScopeFactory.CreateScope();
-    //     var submissionService = scope.ServiceProvider.GetRequiredService<ISubmissionService>();
-    //     return await submissionService.GetByApplicationAndSequenceAsync(applicationId, sequenceNumber);
-    // }
-
-    // [McpServerTool, Description("Generate the next sequence number for an application")]
-    // public async Task<string> GenerateNextSequenceNumberAsync(
-    //     [Description("The ID of the application")] int applicationId)
-    // {
-    //     using var scope = _serviceScopeFactory.CreateScope();
-    //     var submissionService = scope.ServiceProvider.GetRequiredService<ISubmissionService>();
-    //     return await submissionService.GenerateNextSequenceNumberAsync(applicationId);
-    // }
+    public class CreateSubmissionResult
+    {
+        public Submission? CreatedSubmission { get; set; }
+        public bool TocCreated { get; set; }
+    }
 
     [McpServerTool, Description("Create a new submission for an application")]
-    public async Task<Submission> CreateSubmissionAsync(
+    public async Task<CreateSubmissionResult> CreateSubmissionAsync(
         [Description("Required: The ID of the application this submission belongs to")] int applicationId,
         [Description("Required: The ID of the submission activity (from ControlledVocabulary with category 'SubmissionActivity')")] int submissionActivityId,
         [Description("Optional: Description of the submission")] string? description = null,
@@ -102,7 +62,18 @@ public class SubmissionTools
             StatusDate = string.IsNullOrEmpty(statusDate) ? null : DateTime.Parse(statusDate).ToUniversalTime()
         };
 
-        return await submissionService.CreateAsync(submission);
+        var createdSubmission = await submissionService.CreateAsync(submission);
+        var tocCreated = false;
+        if (createdSubmission != null)
+        {
+            tocCreated = await submissionService.PopulateSubmissionToCFromTemplateAsync(createdSubmission.Id);
+        }
+
+        return new CreateSubmissionResult
+        {
+            CreatedSubmission = createdSubmission,
+            TocCreated = tocCreated
+        };
     }
 
     [McpServerTool, Description("Update an existing submission")]
@@ -150,4 +121,29 @@ public class SubmissionTools
         var submissionService = scope.ServiceProvider.GetRequiredService<ISubmissionService>();
         return await submissionService.DeleteAsync(id);
     }
+
+    [McpServerTool, Description("Get the Table of Contents (ToC) for a specific submission")]
+    public async Task<List<SubmissionToC>> GetSubmissionToCAsync(
+        [Description("The ID of the submission to get ToC for")] int submissionId)
+    {
+        using var scope = _serviceScopeFactory.CreateScope();
+        var submissionService = scope.ServiceProvider.GetRequiredService<ISubmissionService>();
+        var tocEntries = await submissionService.GetSubmissionToCAsync(submissionId);
+        return tocEntries.ToList();
+    }
+
+    // [McpServerTool, Description("Update the Start Date, Estimated Days, and End Date for a specific submission ToC entry")]
+    // public async Task<SubmissionToC> UpdateSubmissionToCAsync(
+    //     [Description("The ID of the submission to update")] int submissionId,
+    //     [Description("The ID of the submission ToC entry to update")] int submissionToCId,
+    //     [Description("The new start date")] string? startDate = null,
+    //     [Description("The new estimated days")] int? estimatedDays = null)
+    // {
+    //     using var scope = _serviceScopeFactory.CreateScope();
+    //     var submissionService = scope.ServiceProvider.GetRequiredService<ISubmissionService>();
+    //     var tocEntry = await submissionService.UpdateSubmissionToCDatesAsync(submissionId, submissionToCId, startDate, estimatedDays);
+    //     if (tocEntry == null)
+    //         throw new ArgumentException($"Submission ToC entry with ID {submissionToCId} not found.");
+    //     return tocEntry;
+    // }
 }

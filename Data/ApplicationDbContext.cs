@@ -293,10 +293,6 @@ public class ApplicationDbContext : DbContext
             entity.Property(e => e.Href)
                 .HasMaxLength(1000);
 
-            entity.Property(e => e.StartDate);
-            entity.Property(e => e.EstimatedDays);
-            entity.Property(e => e.EndDate);
-
             // Configure relationship with Submission
             entity.HasOne(e => e.Submission)
                 .WithMany() // No back navigation needed

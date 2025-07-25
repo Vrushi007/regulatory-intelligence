@@ -18,8 +18,4 @@ public class SubmissionToC
 
     public int SubmissionId { get; set; }                    // Reference to Submissions
     public Submission? Submission { get; set; }             // Navigation property
-
-    public DateTime? StartDate { get; set; }                // Start date of the submission item
-    public int? EstimatedDays { get; set; }                 // Estimated days for completion
-    public DateTime? EndDate { get; set; }                  // End date of the submission item
 }

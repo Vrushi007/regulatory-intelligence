@@ -16,6 +16,9 @@ public interface ISubmissionService
     Task<Submission> UpdateAsync(Submission submission);
     Task<bool> DeleteAsync(int id);
     Task<string> GenerateNextSequenceNumberAsync(int applicationId);
+    Task<bool> PopulateSubmissionToCFromTemplateAsync(int submissionId);
+    Task<IEnumerable<SubmissionToC>> GetSubmissionToCAsync(int submissionId);
+    // Task<SubmissionToC?> UpdateSubmissionToCDatesAsync(int submissionId, int submissionToCId, string? startDate, int? estimatedDays);
 }
 
 public class SubmissionService : ISubmissionService
@@ -165,7 +168,7 @@ public class SubmissionService : ISubmissionService
 
         _context.Submissions.Add(submission);
         await _context.SaveChangesAsync();
-        
+
         // Return the created submission with related data
         return await GetByIdAsync(submission.Id) ?? submission;
     }
@@ -196,12 +199,12 @@ public class SubmissionService : ISubmissionService
                 .FirstOrDefaultAsync(cv => cv.Id == submission.SubmissionActivityId && cv.Category == "SubmissionActivity");
             if (submissionActivity == null)
                 throw new ArgumentException($"Submission Activity with ID {submission.SubmissionActivityId} does not exist or is not of category 'SubmissionActivity'.");
-            
+
             existingSubmission.SubmissionActivityId = submission.SubmissionActivityId;
         }
 
         await _context.SaveChangesAsync();
-        
+
         // Return the updated submission with related data
         return await GetByIdAsync(submission.Id) ?? existingSubmission;
     }
@@ -221,4 +224,126 @@ public class SubmissionService : ISubmissionService
         await _context.SaveChangesAsync();
         return true;
     }
-} 
+
+    public async Task<bool> PopulateSubmissionToCFromTemplateAsync(int submissionId)
+    {
+        // Get the submission with its application and country information
+        var submission = await _context.Submissions
+            // .Include(s => s.Application)
+            // .ThenInclude(a => a.Country)
+            .FirstOrDefaultAsync(s => s.Id == submissionId);
+
+        if (submission == null)
+        {
+            return false;
+        }
+
+        // Check if SubmissionToC entries already exist for this submission
+        var existingEntries = await _context.SubmissionToCs
+            .AnyAsync(stoc => stoc.SubmissionId == submissionId);
+
+        if (existingEntries)
+        {
+            return false; // Entries already exist, avoid duplicates
+        }
+
+        // Find the default template that matches the submission's SubmissionActivityId and country
+        var defaultTemplate = await _context.DefaultTemplates
+            .Where(dt => dt.SubmissionTypeId == submission.SubmissionActivityId
+                        // && dt.Country == submission.Application.Country.Code 
+                        && dt.IsActive)
+            .FirstOrDefaultAsync();
+
+        if (defaultTemplate == null)
+        {
+            return false; // No matching template found
+        }
+
+        // Get all template content for this template
+        var templateContents = await _context.DefaultTemplateContents
+            .Where(dtc => dtc.TemplateId == defaultTemplate.Id)
+            .ToListAsync();
+
+        if (!templateContents.Any())
+        {
+            return false; // No template content found
+        }
+
+        // Create SubmissionToC entries from template content
+        var submissionToCEntries = templateContents.Select(tc => new SubmissionToC
+        {
+            SubmissionId = submissionId,
+            Parent = tc.Parent,
+            Section = tc.Section,
+            LeafTitle = tc.LeafTitle,
+            FileName = tc.FileName,
+            Href = tc.Href
+        }).ToList();
+
+        // Add all entries to the context
+        _context.SubmissionToCs.AddRange(submissionToCEntries);
+
+        // Save changes
+        await _context.SaveChangesAsync();
+
+        return true;
+    }
+
+    public async Task<IEnumerable<SubmissionToC>> GetSubmissionToCAsync(int submissionId)
+    {
+        var submissionToc = await _context.SubmissionToCs
+            .Where(stoc => stoc.SubmissionId == submissionId)
+            .Include(stoc => stoc.Submission)
+            .OrderBy(stoc => stoc.Parent)
+            .ThenBy(stoc => stoc.Section)
+            .ThenBy(stoc => stoc.LeafTitle)
+            .ToListAsync();
+        var newSubmissionToc = submissionToc.Select(stoc => new SubmissionToC
+        {
+            Id = stoc.Id,
+            SubmissionId = stoc.SubmissionId,
+            Parent = stoc.Parent,
+            Section = stoc.Section,
+            LeafTitle = stoc.LeafTitle,
+            FileName = stoc.FileName,
+            Href = stoc.Href
+        });
+        return newSubmissionToc;
+    }
+
+    // public async Task<SubmissionToC?> UpdateSubmissionToCDatesAsync(int submissionId, int submissionToCId, string? startDate, int? estimatedDays)
+    // {
+    //     var submissionToC = await _context.SubmissionToCs
+    //         .FirstOrDefaultAsync(stoc => stoc.Id == submissionToCId && stoc.SubmissionId == submissionId);
+
+    //     if (submissionToC == null)
+    //         return null;
+
+    //     // Update StartDate if provided (ensure UTC to avoid PostgreSQL issues)
+    //     if (!string.IsNullOrWhiteSpace(startDate))
+    //     {
+    //         if (DateTime.TryParse(startDate, out DateTime parsedStartDate))
+    //         {
+    //             // Convert to UTC to fix PostgreSQL "timestamp with time zone" issue
+    //             submissionToC.StartDate = parsedStartDate.Kind == DateTimeKind.Utc 
+    //                 ? parsedStartDate 
+    //                 : DateTime.SpecifyKind(parsedStartDate, DateTimeKind.Utc);
+    //         }
+    //     }
+
+    //     // Update EstimatedDays if provided
+    //     if (estimatedDays.HasValue)
+    //     {
+    //         submissionToC.EstimatedDays = estimatedDays.Value;
+    //     }
+
+    //     // Calculate EndDate if both StartDate and EstimatedDays are available
+    //     if (submissionToC.StartDate.HasValue && submissionToC.EstimatedDays.HasValue)
+    //     {
+    //         submissionToC.EndDate = submissionToC.StartDate.Value.AddDays(submissionToC.EstimatedDays.Value);
+    //     }
+
+    //     await _context.SaveChangesAsync();
+    //     return submissionToC;
+    // }
+}
