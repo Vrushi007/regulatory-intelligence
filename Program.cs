@@ -35,7 +35,8 @@ builder.Services.AddMcpServer().WithStdioServerTransport()
     .WithTools<ApplicationTools>()
     .WithTools<SubmissionTools>()
     .WithTools<ControlledVocabularyTools>()
-    .WithTools<DefaultTemplateContentTools>();
+    .WithTools<DefaultTemplateContentTools>()
+    .WithTools<PlanTools>();
 
 builder.Logging.AddConsole(options =>
 {
@@ -49,6 +50,8 @@ builder.Services.AddScoped<IApplicationService, ApplicationService>();
 builder.Services.AddScoped<ISubmissionService, SubmissionService>();
 builder.Services.AddScoped<IControlledVocabularyService, ControlledVocabularyService>();
 builder.Services.AddScoped<DefaultTemplateContentService>();
+builder.Services.AddScoped<IPlanService, PlanService>();
+builder.Services.AddScoped<PlanService>();
 builder.Services.AddScoped<DataSeederService>();
 var host = builder.Build();
 

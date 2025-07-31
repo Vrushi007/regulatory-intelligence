@@ -17,5 +17,8 @@ public class SubmissionToC
     public string Href { get; set; } = string.Empty;        // Path to file or folder
 
     public int SubmissionId { get; set; }                    // Reference to Submissions
+    public DateTime? StartDate { get; set; }
+    public DateTime? EndDate { get; set; }
+    public int? EstimatedDays { get; set; }
     public Submission? Submission { get; set; }             // Navigation property
 }

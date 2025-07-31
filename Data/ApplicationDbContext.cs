@@ -18,10 +18,30 @@ public class ApplicationDbContext : DbContext
     public DbSet<DefaultTemplates> DefaultTemplates { get; set; }
     public DbSet<DefaultTemplateContent> DefaultTemplateContents { get; set; }
     public DbSet<SubmissionToC> SubmissionToCs { get; set; }
+    public DbSet<Plan> Plans { get; set; }
+    public DbSet<PlanDocument> PlanDocuments { get; set; }
+    public DbSet<PlanDocumentSubmissionToCMap> PlanDocumentSubmissionToCMaps { get; set; }
+    public DbSet<PlanSubmissionMap> PlanSubmissionMaps { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
+        // Configure PlanSubmissionMap entity
+        modelBuilder.Entity<PlanSubmissionMap>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.HasOne(e => e.Plan)
+                .WithMany()
+                .HasForeignKey(e => e.PlanId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .IsRequired();
+            entity.HasOne(e => e.Submission)
+                .WithMany()
+                .HasForeignKey(e => e.SubmissionId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .IsRequired();
+        });
 
         // Configure Country entity
         modelBuilder.Entity<Country>(entity =>
@@ -39,6 +59,50 @@ public class ApplicationDbContext : DbContext
                 .IsUnique();
         });
 
+        // Configure Plan entity
+        modelBuilder.Entity<Plan>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Name).IsRequired().HasMaxLength(200);
+            entity.Property(e => e.Description).HasMaxLength(1000);
+            entity.Property(e => e.CreatedBy).HasMaxLength(100);
+            entity.Property(e => e.CreatedDate).IsRequired();
+        });
+
+        // Configure PlanDocument entity
+        modelBuilder.Entity<PlanDocument>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Section).IsRequired().HasMaxLength(300);
+            entity.Property(e => e.Parent).HasMaxLength(300);
+            entity.Property(e => e.LeafTitle).HasMaxLength(300);
+            entity.Property(e => e.FileName).HasMaxLength(255);
+            entity.Property(e => e.Href).HasMaxLength(1000);
+            entity.Property(e => e.StartDate);
+            entity.Property(e => e.EndDate);
+            entity.Property(e => e.EstimatedDays);
+            entity.HasOne(e => e.Plan)
+                .WithMany(p => p.Documents)
+                .HasForeignKey(e => e.PlanId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .IsRequired();
+        });
+
+        // Configure PlanDocumentSubmissionToCMap entity
+        modelBuilder.Entity<PlanDocumentSubmissionToCMap>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.HasOne(e => e.PlanDocument)
+                .WithMany(d => d.SubmissionMappings)
+                .HasForeignKey(e => e.PlanDocumentId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .IsRequired();
+            entity.HasOne(e => e.SubmissionToC)
+                .WithMany()
+                .HasForeignKey(e => e.SubmissionToCId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .IsRequired();
+        });
         // Configure ProductFamily entity
         modelBuilder.Entity<ProductFamily>(entity =>
         {
@@ -292,6 +356,10 @@ public class ApplicationDbContext : DbContext
                 .HasMaxLength(255);
             entity.Property(e => e.Href)
                 .HasMaxLength(1000);
+
+            entity.Property(e => e.StartDate);
+            entity.Property(e => e.EndDate);
+            entity.Property(e => e.EstimatedDays);
 
             // Configure relationship with Submission
             entity.HasOne(e => e.Submission)
