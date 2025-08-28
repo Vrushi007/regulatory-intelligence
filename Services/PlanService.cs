@@ -51,7 +51,7 @@ namespace RimPoc.Services
                 Name = name,
                 Description = description,
                 CreatedBy = createdBy,
-                CreatedDate = DateTime.UtcNow
+                CreatedDate = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Utc)
             };
             _dbContext.Plans.Add(plan);
             await _dbContext.SaveChangesAsync();
@@ -61,6 +61,29 @@ namespace RimPoc.Services
             foreach (var (planDoc, _) in planDocToSubmissionToCMap)
             {
                 planDoc.PlanId = plan.Id;
+                // Ensure StartDate and EndDate are UTC if not null
+                if (planDoc.StartDate.HasValue)
+                {
+                    if (planDoc.StartDate.Value.Kind == DateTimeKind.Unspecified)
+                    {
+                        planDoc.StartDate = DateTime.SpecifyKind(planDoc.StartDate.Value, DateTimeKind.Utc);
+                    }
+                    else if (planDoc.StartDate.Value.Kind == DateTimeKind.Local)
+                    {
+                        planDoc.StartDate = planDoc.StartDate.Value.ToUniversalTime();
+                    }
+                }
+                if (planDoc.EndDate.HasValue)
+                {
+                    if (planDoc.EndDate.Value.Kind == DateTimeKind.Unspecified)
+                    {
+                        planDoc.EndDate = DateTime.SpecifyKind(planDoc.EndDate.Value, DateTimeKind.Utc);
+                    }
+                    else if (planDoc.EndDate.Value.Kind == DateTimeKind.Local)
+                    {
+                        planDoc.EndDate = planDoc.EndDate.Value.ToUniversalTime();
+                    }
+                }
                 _dbContext.PlanDocuments.Add(planDoc);
             }
             await _dbContext.SaveChangesAsync();
@@ -179,9 +202,53 @@ namespace RimPoc.Services
             foreach (var map in mappings)
             {
                 var toc = map.SubmissionToC;
-                toc.StartDate = planDoc.StartDate;
-                toc.EndDate = planDoc.EndDate;
-                toc.EstimatedDays = planDoc.EstimatedDays;
+                if (toc != null)
+                {
+                    // Ensure dates are UTC when syncing
+                    if (planDoc.StartDate.HasValue)
+                    {
+                        var startDate = planDoc.StartDate.Value;
+                        if (startDate.Kind == DateTimeKind.Unspecified)
+                        {
+                            toc.StartDate = DateTime.SpecifyKind(startDate, DateTimeKind.Utc);
+                        }
+                        else if (startDate.Kind == DateTimeKind.Local)
+                        {
+                            toc.StartDate = startDate.ToUniversalTime();
+                        }
+                        else
+                        {
+                            toc.StartDate = startDate;
+                        }
+                    }
+                    else
+                    {
+                        toc.StartDate = null;
+                    }
+
+                    if (planDoc.EndDate.HasValue)
+                    {
+                        var endDate = planDoc.EndDate.Value;
+                        if (endDate.Kind == DateTimeKind.Unspecified)
+                        {
+                            toc.EndDate = DateTime.SpecifyKind(endDate, DateTimeKind.Utc);
+                        }
+                        else if (endDate.Kind == DateTimeKind.Local)
+                        {
+                            toc.EndDate = endDate.ToUniversalTime();
+                        }
+                        else
+                        {
+                            toc.EndDate = endDate;
+                        }
+                    }
+                    else
+                    {
+                        toc.EndDate = null;
+                    }
+
+                    toc.EstimatedDays = planDoc.EstimatedDays;
+                }
             }
             await _dbContext.SaveChangesAsync();
         }
